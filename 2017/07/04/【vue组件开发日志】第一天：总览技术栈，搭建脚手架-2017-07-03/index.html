@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Hello, First Commit! #一、总览技术栈 整个vue组件开发流程可以归结为： 搭建 → 开发 → 打包 → 测试 → 发布 流程中的每一个环节都包含一项或多项技术：  搭建：使用vue-cli自动生成一套脚手架，使用npm工具安装和管理依赖包 开发：使用vue+vuex+vue-router + h5(html5+js+css3)+es6+postcss开发组件，使用其他插件(b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03">
+<meta property="og:url" content="http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/index.html">
+<meta property="og:site_name" content="Catlog">
+<meta property="og:description" content="Hello, First Commit! #一、总览技术栈 整个vue组件开发流程可以归结为： 搭建 → 开发 → 打包 → 测试 → 发布 流程中的每一个环节都包含一项或多项技术：  搭建：使用vue-cli自动生成一套脚手架，使用npm工具安装和管理依赖包 开发：使用vue+vuex+vue-router + h5(html5+js+css3)+es6+postcss开发组件，使用其他插件(b">
+<meta property="og:updated_time" content="2017-07-04T13:07:25.296Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03">
+<meta name="twitter:description" content="Hello, First Commit! #一、总览技术栈 整个vue组件开发流程可以归结为： 搭建 → 开发 → 打包 → 测试 → 发布 流程中的每一个环节都包含一项或多项技术：  搭建：使用vue-cli自动生成一套脚手架，使用npm工具安装和管理依赖包 开发：使用vue+vuex+vue-router + h5(html5+js+css3)+es6+postcss开发组件，使用其他插件(b">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="banner">
+<div id="blogtitel" class="blogtitel">Catlog</div>
+<ul id="wrapper" class="wrapper">
+  <div class="sun">
+    <div class="star"></div>
+  </div>
+  <div class="mercury">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="venus">
+    <div class="planet">
+      <div class="shadow"></div>
+    </div>
+  </div>
+  <div class="earth">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="mars">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+  <div class="jupiter">
+    <div class="planet"><div class="shadow"></div></div>
+  </div>
+</ul>
+</div>
+
+    <div class="background">
+      
+        <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2017/07/04/hello-world/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&text=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&title=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&is_video=false&description=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03&body=Check out this article: http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&title=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&title=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&title=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&title=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&name=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+      
+      <div class="content index width mx-auto px2 my4">
+          
+          <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Catlog</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-07-04T13:05:31.000Z" itemprop="datePublished">2017-07-04</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Hello, First Commit!</p>
+<p>#一、总览技术栈</p>
+<p>整个<strong>vue组件开发流程</strong>可以归结为：</p>
+<p><strong>搭建</strong> → <strong>开发</strong> → <strong>打包</strong> → <strong>测试</strong> → <strong>发布</strong></p>
+<p>流程中的每一个环节都包含一项或多项技术：</p>
+<ul>
+<li><strong>搭建</strong>：使用<strong>vue-cli</strong>自动生成一套脚手架，使用<strong>npm</strong>工具安装和管理依赖包</li>
+<li><strong>开发</strong>：使用<strong>vue</strong>+<strong>vuex</strong>+<strong>vue-router</strong> + <strong>h5</strong>(<strong>html5</strong>+<strong>js</strong>+<strong>css3</strong>)+<strong>es6</strong>+<strong>postcss</strong>开发组件，使用其他插件(<strong>babel</strong>+<strong>eslint</strong>+<strong>editor</strong> + <strong>…</strong>)辅助开发</li>
+<li><strong>打包</strong>：使用<strong>webpack</strong>+<strong>gulp</strong>打包组件库</li>
+<li><strong>测试</strong>：使用<strong>krama</strong>+<strong>nightwatch</strong>+<strong>mock</strong>分别进行<strong>unit test</strong>+<strong>e2e test</strong></li>
+<li><strong>发布</strong>：使用<strong>npm</strong>发布</li>
+</ul>
+<p>#二、搭建脚手架</p>
+<p>实践参考：<a href="http://www.jianshu.com/p/2769efeaa10a" target="_blank" rel="external">http://www.jianshu.com/p/2769efeaa10a</a></p>
+
+  </div>
+</article>
+
+
+
+      </div>
+      
+       <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&text=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&title=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&is_video=false&description=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03&body=Check out this article: http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&title=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&title=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&title=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&title=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/&name=【vue组件开发日志】第一天：总览技术栈，搭建脚手架 2017-07-03&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+      
+      <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 catcuts
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/home/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/tzvetkov75">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+      <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+    </div>
+</body>
+</html>
