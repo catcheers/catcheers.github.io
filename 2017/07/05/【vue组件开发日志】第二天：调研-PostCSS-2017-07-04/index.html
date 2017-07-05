@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/index.html">
 <meta property="og:site_name" content="Catlog">
 <meta property="og:description" content="Hi, Welcome Back. 一、PostCSS 是什么&amp;emsp;&amp;emsp;我的理解，PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者自由根据需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的需求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixe">
-<meta property="og:updated_time" content="2017-07-05T13:37:02.702Z">
+<meta property="og:updated_time" content="2017-07-05T13:41:50.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【vue组件开发日志】第二天：调研 PostCSS 2017-07-04">
 <meta name="twitter:description" content="Hi, Welcome Back. 一、PostCSS 是什么&amp;emsp;&amp;emsp;我的理解，PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者自由根据需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的需求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixe">
@@ -94,7 +94,7 @@
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
                     
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">name</a>
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://catcuts.github.io/">name</a>
                     
                     </div>
                 </section>
@@ -198,16 +198,17 @@
 <h3 id="四、如何在-vue-组件开发中使用-PostCSS"><a href="#四、如何在-vue-组件开发中使用-PostCSS" class="headerlink" title="四、如何在 vue 组件开发中使用 PostCSS"></a>四、如何在 vue 组件开发中使用 <strong>PostCSS</strong></h3><p>&emsp;&emsp;两种方法使用 <strong>PostCSS</strong> 插件：</p>
 <ol>
 <li><p>在 <strong>webpack</strong> 中使用：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"><span class="comment">// 其他配置...</span></div><div class="line">plugins: [</div><div class="line">		<span class="keyword">new</span> webpack.LoaderOptionsPlugin(&#123;</div><div class="line">			<span class="attr">vue</span>: &#123;</div><div class="line">			<span class="comment">// 使用用户自定义插件</span></div><div class="line">				postcss: [<span class="built_in">require</span>(<span class="string">'postcss-cssnext'</span>)()] <span class="comment">//除了接受插件的数组，postcss 选项也接受...</span></div><div class="line">			&#125;</div><div class="line">		&#125;)</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"><span class="comment">// 其他配置...</span></div><div class="line">	plugins: [</div><div class="line">		<span class="keyword">new</span> webpack.LoaderOptionsPlugin(&#123;</div><div class="line">			<span class="attr">vue</span>: &#123;</div><div class="line">			<span class="comment">// 使用用户自定义插件</span></div><div class="line">				postcss: [<span class="built_in">require</span>(<span class="string">'postcss-cssnext'</span>)()] <span class="comment">//除了接受插件的数组，postcss 选项也接受...</span></div><div class="line">			&#125;</div><div class="line">		&#125;)</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>在 <strong>vue-loader</strong> 中使用：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//vue-loader.conf.js</span></div><div class="line"><span class="keyword">var</span> utils = <span class="built_in">require</span>(<span class="string">'./utils'</span>)</div><div class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>)</div><div class="line"><span class="keyword">var</span> isProduction = process.env.NODE_ENV === <span class="string">'production'</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">		<span class="attr">loaders</span>: utils.cssLoaders(&#123;</div><div class="line">			<span class="attr">sourceMap</span>: isProduction</div><div class="line">				? config.build.productionSourceMap</div><div class="line">				: config.dev.cssSourceMap,</div><div class="line">			<span class="attr">extract</span>: isProduction</div><div class="line">		&#125;),</div><div class="line">		<span class="attr">postcss</span>: [</div><div class="line">			<span class="built_in">require</span>(<span class="string">'autoprefixer'</span>)(&#123;</div><div class="line">					<span class="attr">browsers</span>: [<span class="string">'last 2 versions'</span>]</div><div class="line">			&#125;)</div><div class="line">		]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//vue-loader.conf.js</span></div><div class="line"><span class="keyword">var</span> utils = <span class="built_in">require</span>(<span class="string">'./utils'</span>)</div><div class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>)</div><div class="line"><span class="keyword">var</span> isProduction = process.env.NODE_ENV === <span class="string">'production'</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">	<span class="attr">loaders</span>: utils.cssLoaders(&#123;</div><div class="line">		<span class="attr">sourceMap</span>: isProduction</div><div class="line">			? config.build.productionSourceMap</div><div class="line">			: config.dev.cssSourceMap,</div><div class="line">		<span class="attr">extract</span>: isProduction</div><div class="line">	&#125;),</div><div class="line">	<span class="attr">postcss</span>: [</div><div class="line">		<span class="built_in">require</span>(<span class="string">'autoprefixer'</span>)(&#123;</div><div class="line">				<span class="attr">browsers</span>: [<span class="string">'last 2 versions'</span>]</div><div class="line">		&#125;)</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="五、PostCSS-插件一览"><a href="#五、PostCSS-插件一览" class="headerlink" title="五、PostCSS 插件一览"></a>五、<strong>PostCSS</strong> 插件一览</h3><ul>
 <li><a href="https://github.com/postcss/autoprefixer" target="_blank" rel="external">Autoprefixer</a></li>
 <li><a href="http://cssnext.io/" target="_blank" rel="external">CSSnext</a></li>
-<li><a href="https://github.com/shihuacivis/px2rem" target="_blank" rel="external">px2rem</a><br>…</li>
+<li><a href="https://github.com/shihuacivis/px2rem" target="_blank" rel="external">px2rem</a></li>
+<li>…</li>
 </ul>
 <h3 id="六、使用-PostCSS-的注意事项"><a href="#六、使用-PostCSS-的注意事项" class="headerlink" title="六、使用 PostCSS 的注意事项"></a>六、使用 <strong>PostCSS</strong> 的注意事项</h3><p>&emsp;&emsp;（后续使用过程中更新）</p>
 <h3 id="七、周边"><a href="#七、周边" class="headerlink" title="七、周边"></a>七、周边</h3><ul>
@@ -283,7 +284,7 @@
         <p><span>本文标题:</span><a href="/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/">【vue组件开发日志】第二天：调研 PostCSS 2017-07-04</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 catcuts 的个人博客">catcuts</a></p>
         <p><span>发布时间:</span>2017年07月05日 - 21时34分</p>
-        <p><span>最后更新:</span>2017年07月05日 - 21时37分</p>
+        <p><span>最后更新:</span>2017年07月05日 - 21时41分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/" title="【vue组件开发日志】第二天：调研 PostCSS 2017-07-04">http://yoursite.com/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/　　作者: catcuts" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -363,8 +364,8 @@
 <script>
     var gitment = new Gitment({
       id: window.location.pathname,
-      owner: 'luuman',
-      repo: 'luuman.github.io',
+      owner: 'catcuts',
+      repo: 'catcuts.github.io',
       oauth: {
         client_id: 'null',
         client_secret: 'null',
