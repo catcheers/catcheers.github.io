@@ -3025,7 +3025,6 @@ a.gitment-editor-footer-tip:hover {
   float: left;
   margin: 4px 4px 0 -12px;
   color: #c8c8c8;
-F
 }
 .article-title {
   color: #999;
@@ -3033,6 +3032,7 @@ F
   font-weight: initial;
   line-height: 35px;
   margin-bottom: 20px;
+  text-align: left;
   font-size: 26px;
   -webkit-transition: color 0.3s;
   -moz-transition: color 0.3s;
