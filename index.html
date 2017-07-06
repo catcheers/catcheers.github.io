@@ -181,7 +181,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              &emsp;&emsp;PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者根据处理需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的要求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixer”，同时，在 autoprefixer 中，还可以进行更多细节配置，如“是否保留或自动移除开发者编写的 css 语句中的不必要的前缀”等。其他满足不同需求的插件还有：“CSSNext”（让开发者使用 css4 书写 css ，自动编译成目前浏览器支持的 css 语句）、“px2rem”（顾名思义，px 单位转 rem 单位，rem 更擅长自适应布局）等。 &emsp;&emsp;有人说，PostCSS不是预处理器，也不是后处理器，不是“未来的语法”，也不是清理或优化工具，但凡是它们能是实现的，它都能做到。这其实就是在说，PostCSS是什么，就看你需要什么了。
+              &emsp;&emsp;PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者根据处理需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的要求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixer”，同时，在 autoprefixer 中，还可以进行更多细节配置，如“是否保留或自动移除开发者编写的 css 语句中的不必要的前缀”等。其他满足不同需求的插件还有：“CSSNext”（让开发者使用 css4 书写 css ，自动编译成目前浏览器支持的 css 语句）、“px2rem”（顾名思义，px 单位转 rem 单位，rem 更擅长自适应布局）等。 &emsp;&emsp;有人说，PostCSS不是预处理器，也不是后处理器，不是“未来的语法”，也不是清理或优化工具，但凡是它们能是实现的，它都能做到。这其实就是在说，PostCSS是什么，就看你需要什么了。...
 
           
       
@@ -245,19 +245,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Hello, First Commit!</p>
-<h1 id="一、总览技术栈"><a href="#一、总览技术栈" class="headerlink" title="一、总览技术栈"></a>一、总览技术栈</h1><p>整个<strong>vue组件开发流程</strong>可以归结为：</p>
-<p><strong>搭建</strong> → <strong>开发</strong> → <strong>打包</strong> → <strong>测试</strong> → <strong>发布</strong></p>
-<p>流程中的每一个环节都包含一项或多项技术：</p>
-<ul>
-<li><strong>搭建</strong>：使用<strong>vue-cli</strong>自动生成一套脚手架，使用<strong>npm</strong>工具安装和管理依赖包</li>
-<li><strong>开发</strong>：使用<strong>vue</strong>+<strong>vuex</strong>+<strong>vue-router</strong> + <strong>h5</strong>(<strong>html5</strong>+<strong>js</strong>+<strong>css3</strong>)+<strong>es6</strong>+<strong>postcss</strong>开发组件，使用其他插件(<strong>babel</strong>+<strong>eslint</strong>+<strong>editor</strong> + <strong>…</strong>)辅助开发</li>
-<li><strong>打包</strong>：使用<strong>webpack</strong>+<strong>gulp</strong>打包组件库</li>
-<li><strong>测试</strong>：使用<strong>krama</strong>+<strong>nightwatch</strong>+<strong>mock</strong>分别进行<strong>unit test</strong>+<strong>e2e test</strong></li>
-<li><strong>发布</strong>：使用<strong>npm</strong>发布</li>
-</ul>
-<h1 id="二、搭建脚手架"><a href="#二、搭建脚手架" class="headerlink" title="二、搭建脚手架"></a>二、搭建脚手架</h1><p>实践参考：<a href="http://www.jianshu.com/p/2769efeaa10a" target="_blank" rel="external">http://www.jianshu.com/p/2769efeaa10a</a></p>
-
+              整个vue组件开发流程可以归结为：搭建 → 开发 → 打包 → 测试 → 发布。流程中的每一个环节都包含一项或多项技术：...
+          
       
       
     </div>
@@ -271,6 +260,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue组件开发/">vue组件开发</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -315,16 +308,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+              Welcome to [Hexo]! This is your very first post. Check [documentation] for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting] or you can ask me on [GitHub].
+          
       
       
     </div>
@@ -334,6 +319,10 @@
       
 
       
+      
+        <p class="article-more-link">
+          <a  href="/2017/07/04/hello-world/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
