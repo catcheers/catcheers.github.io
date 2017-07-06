@@ -5,17 +5,17 @@
   
   <title>【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05 | Catlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vue 组件开发是处在 vuejs 的官方模板项目中进行的，因此有必要理解这个模板项目的架构以及各部分的功能和用法。本篇会对官方文档对该模板项目的说明进行摘要和总结，提取要点和备忘，也方便今后进行回忆和索引。">
+  <meta name="description" content="&amp;emsp;&amp;emsp;这个项目中的 vue 组件开发是处在 vuejs 的官方模板项目中进行的，因此有必要理解这个模板项目的架构以及各部分的功能和用法。本篇会对官方文档对该模板项目的说明进行摘要和总结，提取要点和备忘，也方便今后进行回忆和索引。">
 <meta name="keywords" content="vue组件开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05">
 <meta property="og:url" content="http://yoursite.com/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/index.html">
 <meta property="og:site_name" content="Catlog">
-<meta property="og:description" content="vue 组件开发是处在 vuejs 的官方模板项目中进行的，因此有必要理解这个模板项目的架构以及各部分的功能和用法。本篇会对官方文档对该模板项目的说明进行摘要和总结，提取要点和备忘，也方便今后进行回忆和索引。">
-<meta property="og:updated_time" content="2017-07-06T15:05:08.221Z">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;这个项目中的 vue 组件开发是处在 vuejs 的官方模板项目中进行的，因此有必要理解这个模板项目的架构以及各部分的功能和用法。本篇会对官方文档对该模板项目的说明进行摘要和总结，提取要点和备忘，也方便今后进行回忆和索引。">
+<meta property="og:updated_time" content="2017-07-06T15:07:57.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05">
-<meta name="twitter:description" content="vue 组件开发是处在 vuejs 的官方模板项目中进行的，因此有必要理解这个模板项目的架构以及各部分的功能和用法。本篇会对官方文档对该模板项目的说明进行摘要和总结，提取要点和备忘，也方便今后进行回忆和索引。">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;这个项目中的 vue 组件开发是处在 vuejs 的官方模板项目中进行的，因此有必要理解这个模板项目的架构以及各部分的功能和用法。本篇会对官方文档对该模板项目的说明进行摘要和总结，提取要点和备忘，也方便今后进行回忆和索引。">
   
     <link rel="alternative" href="/atom.xml" title="Catlog" type="application/atom+xml">
   
@@ -191,7 +191,6 @@
           
         <p>Good Evening :)</p>
 <p>&emsp;&emsp;这个项目中的 <strong>vue</strong> 组件开发是处在 <strong>vuejs</strong> 的官方模板项目中进行的，因此有必要理解这个模板项目的架构以及各部分的功能和用法。本篇会对官方文档对该模板项目的说明进行摘要和总结，提取要点和备忘，也方便今后进行回忆和索引。</p>
-<p>[TOC]</p>
 <h3 id="一、项目结构"><a href="#一、项目结构" class="headerlink" title="一、项目结构"></a>一、项目结构</h3><p>&emsp;&emsp;<strong>vuejs</strong> 的模板项目结构如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── build/									# webpack 配置文件</div><div class="line">│   └── ...</div><div class="line">├── config/</div><div class="line">│   ├── index.js							# 主要项目配置</div><div class="line">│   └── ...</div><div class="line">├── src/</div><div class="line">│   ├── main.js								# 应用入口文件</div><div class="line">│   ├── App.vue								# 根应用组件</div><div class="line">│   ├── components/							# UI组件</div><div class="line">│   │   └── ...</div><div class="line">│   └── assets/								# 模型资源 (需要 webpack 处理的资源)</div><div class="line">│       └── ...</div><div class="line">├── static/									# 纯静态资源 (直接拷贝)</div><div class="line">├── test/</div><div class="line">│   └── unit/								# 单元测试</div><div class="line">│   │   ├── specs/							# 测试指定文件</div><div class="line">│   │   ├── index.js						# 测试生成的入口文件</div><div class="line">│   │   └── karma.conf.js					# 测试运行的配置文件</div><div class="line">│   └── e2e/								# e2e测试</div><div class="line">│   │   ├── specs/							# 测试指定文件</div><div class="line">│   │   ├── custom-assertions/				# 自定义e2e测试</div><div class="line">│   │   ├── runner.js						# 测试运行的脚本</div><div class="line">│   │   └── nightwatch.conf.js				# 测试运行的配置文件</div><div class="line">├── .babelrc								# babel 配置</div><div class="line">├── .editorconfig.js						# editor 配置</div><div class="line">├── .eslintrc.js							# eslint 配置</div><div class="line">├── index.html								# index.html 模板</div><div class="line">└── package.json							# 构建脚本和依赖项</div></pre></td></tr></table></figure></p>
 <p>&emsp;&emsp;我们将它按照功能整理为：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">├── 配置</div><div class="line">	├── 项目配置 ./config/index.js</div><div class="line">	├── 打包配置 ./build/</div><div class="line">		├── ...</div><div class="line">	├── 辅助配置</div><div class="line">		├── ./.babelrc</div><div class="line">		├── ./editorconfig.js</div><div class="line">		├── ./.eslintrc.js</div><div class="line">├── 资源</div><div class="line">	├── 静态资源 ./static/</div><div class="line">	├── 组件资源 ./src/assets/</div><div class="line">├── 测试</div><div class="line">	├── 单元测试 ./test/unit/</div><div class="line">	├── 端端测试 ./test/e2e</div><div class="line">├── 其他</div><div class="line">	├── 模板 ./index.html</div><div class="line">	├── 元数据 ./package.json</div></pre></td></tr></table></figure></p>
 <p>&emsp;&emsp;这样，当我们想知道某个文件是干嘛用的时候，查第一幅地图；而当我们想知道某个功能的实现文件的时候，就查第二幅地图。</p>
@@ -261,7 +260,7 @@
         <p><span>本文标题:</span><a href="/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/">【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 catcuts 的个人博客">catcuts</a></p>
         <p><span>发布时间:</span>2017年07月06日 - 22时45分</p>
-        <p><span>最后更新:</span>2017年07月06日 - 23时05分</p>
+        <p><span>最后更新:</span>2017年07月06日 - 23时07分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/" title="【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05">http://yoursite.com/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/　　作者: catcuts" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
