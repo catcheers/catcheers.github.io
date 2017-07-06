@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03 | Catlog</title>
+  <title>【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05 | Catlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="整个vue组件开发流程可以归结为：搭建 → 开发 → 打包 → 测试 → 发布。流程中的每一个环节都包含一项或多项技术：...">
+  <meta name="description" content="vue 组件开发是处在 vuejs 的官方模板项目中进行的，因此有必要理解这个模板项目的架构以及各部分的功能和用法。本篇会对官方文档对该模板项目的说明进行摘要和总结，提取要点和备忘，也方便今后进行回忆和索引。">
 <meta name="keywords" content="vue组件开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03">
-<meta property="og:url" content="http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/index.html">
+<meta property="og:title" content="【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05">
+<meta property="og:url" content="http://yoursite.com/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/index.html">
 <meta property="og:site_name" content="Catlog">
-<meta property="og:description" content="整个vue组件开发流程可以归结为：搭建 → 开发 → 打包 → 测试 → 发布。流程中的每一个环节都包含一项或多项技术：...">
-<meta property="og:updated_time" content="2017-07-06T11:36:21.799Z">
+<meta property="og:description" content="vue 组件开发是处在 vuejs 的官方模板项目中进行的，因此有必要理解这个模板项目的架构以及各部分的功能和用法。本篇会对官方文档对该模板项目的说明进行摘要和总结，提取要点和备忘，也方便今后进行回忆和索引。">
+<meta property="og:updated_time" content="2017-07-06T14:56:28.656Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03">
-<meta name="twitter:description" content="整个vue组件开发流程可以归结为：搭建 → 开发 → 打包 → 测试 → 发布。流程中的每一个环节都包含一项或多项技术：...">
+<meta name="twitter:title" content="【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05">
+<meta name="twitter:description" content="vue 组件开发是处在 vuejs 的官方模板项目中进行的，因此有必要理解这个模板项目的架构以及各部分的功能和用法。本篇会对官方文档对该模板项目的说明进行摘要和总结，提取要点和备忘，也方便今后进行回忆和索引。">
   
     <link rel="alternative" href="/atom.xml" title="Catlog" type="application/atom+xml">
   
@@ -151,11 +151,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/" class="article-date">
-      <time datetime="2017-07-04T13:05:31.000Z" itemprop="datePublished">2017-07-04</time>
+      <a href="/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/" class="article-date">
+      <time datetime="2017-07-06T14:45:29.000Z" itemprop="datePublished">2017-07-06</time>
 </a>
     </div>
   
@@ -168,7 +168,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03
+      【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05
     </h1>
   
 
@@ -189,18 +189,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Hello, First Commit!</p>
-<h1 id="一、总览技术栈"><a href="#一、总览技术栈" class="headerlink" title="一、总览技术栈"></a>一、总览技术栈</h1><p>整个<strong>vue组件开发流程</strong>可以归结为：</p>
-<p><strong>搭建</strong> → <strong>开发</strong> → <strong>打包</strong> → <strong>测试</strong> → <strong>发布</strong></p>
-<p>流程中的每一个环节都包含一项或多项技术：</p>
-<ul>
-<li><strong>搭建</strong>：使用<strong>vue-cli</strong>自动生成一套脚手架，使用<strong>npm</strong>工具安装和管理依赖包</li>
-<li><strong>开发</strong>：使用<strong>vue</strong>+<strong>vuex</strong>+<strong>vue-router</strong> + <strong>h5</strong>(<strong>html5</strong>+<strong>js</strong>+<strong>css3</strong>)+<strong>es6</strong>+<strong>postcss</strong>开发组件，使用其他插件(<strong>babel</strong>+<strong>eslint</strong>+<strong>editor</strong> + <strong>…</strong>)辅助开发</li>
-<li><strong>打包</strong>：使用<strong>webpack</strong>+<strong>gulp</strong>打包组件库</li>
-<li><strong>测试</strong>：使用<strong>krama</strong>+<strong>nightwatch</strong>+<strong>mock</strong>分别进行<strong>unit test</strong>+<strong>e2e test</strong></li>
-<li><strong>发布</strong>：使用<strong>npm</strong>发布</li>
+        <p>&emsp;&emsp;这个项目中的 <strong>vue</strong> 组件开发是处在 <strong>vuejs</strong> 的官方模板项目中进行的，因此有必要理解这个模板项目的架构以及各部分的功能和用法。本篇会对官方文档对该模板项目的说明进行摘要和总结，提取要点和备忘，也方便今后进行回忆和索引。</p>
+<p>[TOCM]</p>
+<h3 id="一、项目结构"><a href="#一、项目结构" class="headerlink" title="一、项目结构"></a>一、项目结构</h3><p>&emsp;&emsp;<strong>vuejs</strong> 的模板项目结构如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── build/									# webpack 配置文件</div><div class="line">│   └── ...</div><div class="line">├── config/</div><div class="line">│   ├── index.js							# 主要项目配置</div><div class="line">│   └── ...</div><div class="line">├── src/</div><div class="line">│   ├── main.js								# 应用入口文件</div><div class="line">│   ├── App.vue								# 根应用组件</div><div class="line">│   ├── components/							# UI组件</div><div class="line">│   │   └── ...</div><div class="line">│   └── assets/								# 模型资源 (需要 webpack 处理的资源)</div><div class="line">│       └── ...</div><div class="line">├── static/									# 纯静态资源 (直接拷贝)</div><div class="line">├── test/</div><div class="line">│   └── unit/								# 单元测试</div><div class="line">│   │   ├── specs/							# 测试指定文件</div><div class="line">│   │   ├── index.js						# 测试生成的入口文件</div><div class="line">│   │   └── karma.conf.js					# 测试运行的配置文件</div><div class="line">│   └── e2e/								# e2e测试</div><div class="line">│   │   ├── specs/							# 测试指定文件</div><div class="line">│   │   ├── custom-assertions/				# 自定义e2e测试</div><div class="line">│   │   ├── runner.js						# 测试运行的脚本</div><div class="line">│   │   └── nightwatch.conf.js				# 测试运行的配置文件</div><div class="line">├── .babelrc								# babel 配置</div><div class="line">├── .editorconfig.js						# editor 配置</div><div class="line">├── .eslintrc.js							# eslint 配置</div><div class="line">├── index.html								# index.html 模板</div><div class="line">└── package.json							# 构建脚本和依赖项</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;我们将它按照功能整理为：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">├── 配置</div><div class="line">	├── 项目配置 ./config/index.js</div><div class="line">	├── 打包配置 ./build/</div><div class="line">		├── ...</div><div class="line">	├── 辅助配置</div><div class="line">		├── ./.babelrc</div><div class="line">		├── ./editorconfig.js</div><div class="line">		├── ./.eslintrc.js</div><div class="line">├── 资源</div><div class="line">	├── 静态资源 ./static/</div><div class="line">	├── 组件资源 ./src/assets/</div><div class="line">├── 测试</div><div class="line">	├── 单元测试 ./test/unit/</div><div class="line">	├── 端端测试 ./test/e2e</div><div class="line">├── 其他</div><div class="line">	├── 模板 ./index.html</div><div class="line">	├── 元数据 ./package.json</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;这样，当我们想知道某个文件是干嘛用的时候，查第一幅地图；而当我们想知道某个功能的实现文件的时候，就查第二幅地图。</p>
+<h3 id="二、构建命令"><a href="#二、构建命令" class="headerlink" title="二、构建命令"></a>二、构建命令</h3><p>&emsp;&emsp;<strong>vuejs</strong> 模板项目提供四种构建命令：<a href="https://lvyongbo.gitbooks.io/vuejs-templates/content/commands.html" target="_blank" rel="external">↗详</a><br>&emsp;&emsp;1.  本地开发： <strong>npm run dev</strong> <a href="https://lvyongbo.gitbooks.io/vuejs-templates/content/proxy.html" target="_blank" rel="external">↗详</a><br>&emsp;&emsp;2.  生产版本： <strong>npm run build</strong> <a href="https://lvyongbo.gitbooks.io/vuejs-templates/content/backend.html" target="_blank" rel="external">↗详</a><br>&emsp;&emsp;3.  单元测试： <strong>npm run unit</strong> <a href="https://lvyongbo.gitbooks.io/vuejs-templates/content/unit.html" target="_blank" rel="external">↗详</a><br>&emsp;&emsp;4.  端端测试： <strong>npm run e2e</strong> <a href="https://lvyongbo.gitbooks.io/vuejs-templates/content/e2e.html" target="_blank" rel="external">↗详</a></p>
+<h3 id="三、vue-loader-如何处理资源"><a href="#三、vue-loader-如何处理资源" class="headerlink" title="三、vue-loader 如何处理资源"></a>三、<strong>vue-loader</strong> 如何处理资源</h3><p>&emsp;&emsp;<a href="https://lvyongbo.gitbooks.io/vuejs-templates/content/static.html" target="_blank" rel="external">↗详</a><br>&emsp;&emsp;<strong>vue-loader</strong> 的两个依赖，<strong>vue-html-loader</strong> 和 <strong>css-loader</strong>。<br>&emsp;&emsp;其中， <strong>vue-html-loader</strong> 处理 <strong>vue</strong> 组件中的模板部分 <code>&lt;template&gt;...&lt;template/&gt;</code>，将其中的资源引用转译为 <strong>JS</strong> 的模块语句<code>require(...)</code>。如：<br>&emsp;&emsp;<code>&lt;img src=&quot;image.png&quot;&gt;</code> 转译成 <code>createElement(&#39;img&#39;, { attrs: { src: require(&#39;../image.png&#39;) }})</code>。<br>&emsp;&emsp;而 css-loader 将 <code>background: url(./logo.png)</code> 转译成 <code>require(&quot;./logo.png&quot;)</code>。<br>&emsp;&emsp;然后，因为<code>require(...)</code>的内容<code>...</code>不是 <strong>JS</strong>，因此还需要 <strong>url-loader</strong> 和 <strong>file-loader</strong> 来转译它们。<br>其中， <strong>file-loader</strong> 将文件的<strong>相对路径</strong>解析成正确的 URL 。<br>&emsp;&emsp;<strong>url-loader</strong> 则提供了一种功能，当引用资源大小低于设定阈值时，将该资源转为内联的 <strong>base64</strong>，从而减小请求量；当引用的资源大小高于设定阈值时，则使用 <strong>file-loader</strong> 来处理它。<br>&emsp;&emsp;如此说来，file-loader 更应该被命名为 <strong>url-loader</strong>，而 <strong>url-loader</strong> 应该命名为 <strong>base64-loader</strong> ？ 哈哈 XD</p>
+<p>&emsp;&emsp;<a href="https://lvyongbo.gitbooks.io/vue-loader/content/configurations/asset-url.html" target="_blank" rel="external">↗详</a><br>&emsp;&emsp;在 <strong>vuejs</strong> 模板项目中，<strong>src/assets</strong> 的资源会采用上述方式进行引用，编译打包后原有资源的命名会改变，或者格式也会发生变化（如 <strong>base64</strong> ）。<br>&emsp;&emsp;而 <strong>static/</strong> 下的资源并没有被 <strong>webpack</strong> 处理，它们完全是直接拷贝到所要用的目的地，文件名和格式也都没变。<br>&emsp;&emsp;基于这个原因，为了使用 <strong>static/</strong> 下的资源，我们必须让引用路径不必解析就能使用，也就是绝对路径，这就需要配置 <strong>config/index.js</strong> 的 <strong>build.assetsPublicPath</strong> 和 <strong>build.assetsSubDirectory</strong>。</p>
+<h3 id="四、其他"><a href="#四、其他" class="headerlink" title="四、其他"></a>四、其他</h3><p>&emsp;&emsp;目前了解到这些就够了，其他诸如测试和后端，等接触到再去总结，目前有个印象就好。</p>
+<h3 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h3><ul>
+<li><a href="https://lvyongbo.gitbooks.io/vuejs-templates/content/" target="_blank" rel="external">Vuejs-Templates 文档 中文版</a></li>
+<li><a href="https://lvyongbo.gitbooks.io/vue-loader/content/" target="_blank" rel="external">vue-loader 开发指南 中文版</a></li>
 </ul>
-<h1 id="二、搭建脚手架"><a href="#二、搭建脚手架" class="headerlink" title="二、搭建脚手架"></a>二、搭建脚手架</h1><p>实践参考：<a href="http://www.jianshu.com/p/2769efeaa10a" target="_blank" rel="external">http://www.jianshu.com/p/2769efeaa10a</a></p>
 
       
       
@@ -256,13 +257,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/">【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03</a></p>
+        <p><span>本文标题:</span><a href="/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/">【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 catcuts 的个人博客">catcuts</a></p>
-        <p><span>发布时间:</span>2017年07月04日 - 21时05分</p>
-        <p><span>最后更新:</span>2017年07月06日 - 19时36分</p>
+        <p><span>发布时间:</span>2017年07月06日 - 22时45分</p>
+        <p><span>最后更新:</span>2017年07月06日 - 22时56分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/" title="【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03">http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/　　作者: catcuts" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/" title="【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05">http://yoursite.com/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/　　作者: catcuts" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -275,18 +276,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          【vue组件开发日志】第2天：调研 PostCSS 2017-07-04
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/07/04/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【vue组件开发日志】第2天：调研 PostCSS 2017-07-04</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -297,7 +289,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、总览技术栈"><span class="toc-number">1.</span> <span class="toc-text">一、总览技术栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、搭建脚手架"><span class="toc-number">2.</span> <span class="toc-text">二、搭建脚手架</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、项目结构"><span class="toc-number">1.</span> <span class="toc-text">一、项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、构建命令"><span class="toc-number">2.</span> <span class="toc-text">二、构建命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、vue-loader-如何处理资源"><span class="toc-number">3.</span> <span class="toc-text">三、vue-loader 如何处理资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、其他"><span class="toc-number">4.</span> <span class="toc-text">四、其他</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、参考"><span class="toc-number">5.</span> <span class="toc-text">五、参考</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -354,13 +346,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/" title="上一篇: 【vue组件开发日志】第2天：调研 PostCSS 2017-07-04">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/07/04/hello-world/" title="下一篇: Hello World">
+            <a href="/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/" title="下一篇: 【vue组件开发日志】第2天：调研 PostCSS 2017-07-04">
                 <i class="fa fa-angle-right"></i>
             </a>
         
