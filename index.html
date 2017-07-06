@@ -181,48 +181,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Hi, Welcome Back.</p>
-<h3 id="一、PostCSS-是什么"><a href="#一、PostCSS-是什么" class="headerlink" title="一、PostCSS 是什么"></a>一、<strong>PostCSS</strong> 是什么</h3><p>&emsp;&emsp;我的理解，<strong>PostCSS</strong> 用来对开发者编写的 <strong>css</strong> 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者自由根据需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的需求。比如，开发者有对 <strong>css</strong> 语句自动加浏览器前缀的需求，于是选择 <strong>PostCSS</strong> 的一款插件，名为“<strong>autoprefixer</strong>”，同时，在 <strong>autoprefixer</strong> 中，还可以进行更多细节配置，如“是否保留或自动移除开发者编写的 <strong>css</strong> 语句中的不必要的前缀”等。其他满足不同需求的插件还有：“<strong>CSSNext</strong>”（让开发者使用 <strong>css4</strong> 书写 <strong>css</strong> ，自动编译成目前浏览器支持的 <strong>css</strong> 语句）、“<strong>px2rem</strong>”（顾名思义，<strong>px</strong> 单位转 <strong>rem</strong> 单位，<strong>rem</strong> 更擅长自适应布局）等。<br>&emsp;&emsp;有人说，<strong>PostCSS</strong>不是预处理器，也不是后处理器，不是“未来的语法”，也不是清理或优化工具，但凡是它们能是实现的，它都能做到。这其实就是在说，<strong>PostCSS</strong>要成为什么工具，完全取决于你有什么需求。</p>
-<h3 id="二、为什么要用-PostCSS"><a href="#二、为什么要用-PostCSS" class="headerlink" title="二、为什么要用 PostCSS"></a>二、为什么要用 <strong>PostCSS</strong></h3><p>&emsp;&emsp;一句话，为了从不必要的繁琐易错工作中解放，为了方便地体验到新技术的特性，为了更多已被和将被发掘出来的需求。比如为了兼容浏览器而加的各种前缀，为了体验 <strong>css4</strong> ，为了把 <strong>px</strong> 自动转换为 <strong>rem</strong> 以更好地实现自适应布局。</p>
-<h3 id="三、如何使用-PostCSS"><a href="#三、如何使用-PostCSS" class="headerlink" title="三、如何使用 PostCSS"></a>三、如何使用 <strong>PostCSS</strong></h3><ol>
-<li>明确你的需求，挑选或开发用于满足这个需求的插件；</li>
-<li>使用 <strong>gulp</strong> （需 <strong>gulp-postcss</strong>）或 <strong>webpack</strong> （需 <strong>postcss-loader</strong>） 等综合前端自动化构建工具作为 <strong>PostCSS</strong> 的调用者，编写 <strong>gulp</strong> 任务（<strong>task</strong>）或配置 webpack 加载器（<strong>loader</strong>）；</li>
-<li>配置 <strong>PostCSS</strong> 。3种方式：在项目的 <strong>package.json</strong> 中配置，或创建一个 <strong>.postcssrc.json</strong> ，或<strong> .postcssrc.js</strong> / <strong>postcss.config.js</strong> 。前两者都是 <strong>json</strong> ，后面两者允许用户使用 <strong>js</strong> 模块语法；</li>
-<li>配置所用插件。这要阅读插件的使用说明。</li>
-</ol>
-<p>&emsp;&emsp;如此一来，当你在运行自动化构建时，<strong>PostCSS</strong> 将帮助你实现你所想要的。</p>
-<h3 id="四、如何在-vue-组件开发中使用-PostCSS"><a href="#四、如何在-vue-组件开发中使用-PostCSS" class="headerlink" title="四、如何在 vue 组件开发中使用 PostCSS"></a>四、如何在 vue 组件开发中使用 <strong>PostCSS</strong></h3><p>&emsp;&emsp;两种方法使用 <strong>PostCSS</strong> 插件：</p>
-<ol>
-<li><p>在 <strong>webpack</strong> 中使用：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"><span class="comment">// 其他配置...</span></div><div class="line">	plugins: [</div><div class="line">		<span class="keyword">new</span> webpack.LoaderOptionsPlugin(&#123;</div><div class="line">			<span class="attr">vue</span>: &#123;</div><div class="line">			<span class="comment">// 使用用户自定义插件</span></div><div class="line">				postcss: [<span class="built_in">require</span>(<span class="string">'postcss-cssnext'</span>)()] <span class="comment">//除了接受插件的数组，postcss 选项也接受...</span></div><div class="line">			&#125;</div><div class="line">		&#125;)</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>在 <strong>vue-loader</strong> 中使用：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//vue-loader.conf.js</span></div><div class="line"><span class="keyword">var</span> utils = <span class="built_in">require</span>(<span class="string">'./utils'</span>)</div><div class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>)</div><div class="line"><span class="keyword">var</span> isProduction = process.env.NODE_ENV === <span class="string">'production'</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">	<span class="attr">loaders</span>: utils.cssLoaders(&#123;</div><div class="line">		<span class="attr">sourceMap</span>: isProduction</div><div class="line">			? config.build.productionSourceMap</div><div class="line">			: config.dev.cssSourceMap,</div><div class="line">		<span class="attr">extract</span>: isProduction</div><div class="line">	&#125;),</div><div class="line">	<span class="attr">postcss</span>: [</div><div class="line">		<span class="built_in">require</span>(<span class="string">'autoprefixer'</span>)(&#123;</div><div class="line">				<span class="attr">browsers</span>: [<span class="string">'last 2 versions'</span>]</div><div class="line">		&#125;)</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="五、PostCSS-插件一览"><a href="#五、PostCSS-插件一览" class="headerlink" title="五、PostCSS 插件一览"></a>五、<strong>PostCSS</strong> 插件一览</h3><ul>
-<li><a href="https://github.com/postcss/autoprefixer" target="_blank" rel="external">Autoprefixer</a></li>
-<li><a href="http://cssnext.io/" target="_blank" rel="external">CSSnext</a></li>
-<li><a href="https://github.com/shihuacivis/px2rem" target="_blank" rel="external">px2rem</a></li>
-<li>…</li>
-</ul>
-<h3 id="六、使用-PostCSS-的注意事项"><a href="#六、使用-PostCSS-的注意事项" class="headerlink" title="六、使用 PostCSS 的注意事项"></a>六、使用 <strong>PostCSS</strong> 的注意事项</h3><p>&emsp;&emsp;（后续使用过程中更新）</p>
-<h3 id="七、周边"><a href="#七、周边" class="headerlink" title="七、周边"></a>七、周边</h3><ul>
-<li><a href="https://www.postcss.parts/" title="PostCSS.parts: A searchable catalog of PostCSS plugins" target="_blank" rel="external">PostCSS 插件集：PostCSS.parts: A searchable catalog of PostCSS plugins</a></li>
-<li><a href="http://caniuse.com/" target="_blank" rel="external">CSS 特性兼容检索器：Can I Use</a></li>
-</ul>
-<h3 id="八、参考"><a href="#八、参考" class="headerlink" title="八、参考"></a>八、参考</h3><ul>
-<li><a href="https://happycoder.net/what-is-postcss/" title="PostCSS 究竟是个什么鬼？" target="_blank" rel="external">PostCSS 究竟是个什么鬼？</a></li>
-<li><a href="http://www.cnblogs.com/nzbin/p/5744672.html" title="使用 cssnext 书写未来的 CSS" target="_blank" rel="external">使用 cssnext 书写未来的 CSS</a></li>
-<li><a href="https://github.com/michael-ciniawsky/postcss-load-config" target="_blank" rel="external">PostCSS 配置方式</a></li>
-<li><a href="http://div.io/topic/1575" target="_blank" rel="external">在 gulp 中快速使用 PostCSS</a></li>
-<li><a href="https://juejin.im/post/581bfc368ac247004fe174af" target="_blank" rel="external">在 webpack for vue 中使用 PostCSS</a></li>
-<li><a href="http://www.jianshu.com/p/21d43d6ed713" target="_blank" rel="external">在 vue-loader 中使用 PostCSS</a></li>
-<li><a href="https://lvyongbo.gitbooks.io/vue-loader/content/features/postcss.html" target="_blank" rel="external">vue-loader 开发指南中文版 - PostCSS</a></li>
-<li><a href="https://www.w3cplus.com/preprocessor/postcss-modules-make-css-great-again.html" target="_blank" rel="external">让 CSS 更完美： PostCSS-modules</a></li>
-<li><a href="https://glenmaddern.com/articles/css-modules" target="_blank" rel="external">CSS Modules: Welcome To the Future</a></li>
-</ul>
+              &emsp;&emsp;PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者根据处理需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的要求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixer”，同时，在 autoprefixer 中，还可以进行更多细节配置，如“是否保留或自动移除开发者编写的 css 语句中的不必要的前缀”等。其他满足不同需求的插件还有：“CSSNext”（让开发者使用 css4 书写 css ，自动编译成目前浏览器支持的 css 语句）、“px2rem”（顾名思义，px 单位转 rem 单位，rem 更擅长自适应布局）等。 &emsp;&emsp;有人说，PostCSS不是预处理器，也不是后处理器，不是“未来的语法”，也不是清理或优化工具，但凡是它们能是实现的，它都能做到。这其实就是在说，PostCSS是什么，就看你需要什么了。
 
+          
       
       
     </div>
@@ -236,6 +197,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue组件开发/">vue组件开发</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
