@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/08/【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08/index.html">
 <meta property="og:site_name" content="Catlog">
 <meta property="og:description" content="明确需求，稳扎稳打">
-<meta property="og:updated_time" content="2017-07-08T13:48:04.207Z">
+<meta property="og:updated_time" content="2017-07-08T22:00:54.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【vue组件开发日志】第5天：页码器组件 Paginator.vue 需求分析 2017-07-07">
 <meta name="twitter:description" content="明确需求，稳扎稳打">
@@ -189,39 +189,39 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>为了在 <strong>sublime</strong> 编辑 <strong>evernote</strong> 笔记折腾了 <strong>1</strong> 个小时…</p>
-<h3 id="一、功能"><a href="#一、功能" class="headerlink" title="一、功能"></a>一、功能</h3><p>&emsp;&emsp;1.  首页（可选）<br>&emsp;&emsp;2.  上一页（必选）<br>&emsp;&emsp;3.  翻页（必选）<br>&emsp;&emsp;&emsp;&emsp;-  点击翻页（可选，直接点击页码）<br>&emsp;&emsp;&emsp;&emsp;-  手动翻页（可选，点击 [ … ] 以找到所需页码）<br>&emsp;&emsp;&emsp;&emsp;-  输入翻页（可选）<br>&emsp;&emsp;&emsp;&emsp;-  下拉翻页（可选）<br>&emsp;&emsp;4.  下一页（必选）<br>&emsp;&emsp;5.  末页（可选）</p>
-<h3 id="二、样式"><a href="#二、样式" class="headerlink" title="二、样式"></a>二、样式</h3><h4 id="emsp-emsp-1-电脑端（所有功能）"><a href="#emsp-emsp-1-电脑端（所有功能）" class="headerlink" title="&emsp;&emsp;1.  电脑端（所有功能）"></a>&emsp;&emsp;1.  电脑端（所有功能）</h4><p>&emsp;&emsp;&emsp;&emsp;-  显示页码数 &gt;= 总页数 （此处假设 50 &gt;= 5）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ &gt; ] [ &gt;&gt; ]</strong></p>
-<p>&emsp;&emsp;&emsp;&emsp;-  显示页码数 &lt; 总页数 （此处假设 5 &lt; 50）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  手动翻页<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ … ] [ &gt; ] [ &gt;&gt; ]</strong></p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  输入翻页<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ enter_page_no ] [ &gt; ] [ &gt;&gt; ]</strong></p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  下拉翻页<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ dropdown_page<em>no</em>[v] ] [ &gt; ] [ &gt;&gt; ]</strong></p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  输入翻页 + 手动翻页 （上下位置可互换）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] <sup>[ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ … ]</sup> <sub>[ enter_page_no ]</sub> [ &gt; ] [ &gt;&gt; ]</strong></p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  下拉翻页 + 手动翻页 （上下位置可互换）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] <sup>[ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ … ]</sup> <sub>[ dropdown_page<em>no</em>[v] ]</sub>&gt; [ &gt; ] [ &gt;&gt; ]</strong></p>
-<h4 id="emsp-emsp-1-移动端（所有功能）"><a href="#emsp-emsp-1-移动端（所有功能）" class="headerlink" title="&emsp;&emsp;1.  移动端（所有功能）"></a>&emsp;&emsp;1.  移动端（所有功能）</h4><p>&emsp;&emsp;&emsp;&emsp;和电脑端（所有功能）一致，只是页码器宽度要自适应屏幕宽度.</p>
-<h3 id="三、定制"><a href="#三、定制" class="headerlink" title="三、定制"></a>三、定制</h3><h4 id="emsp-emsp-1-功能定制"><a href="#emsp-emsp-1-功能定制" class="headerlink" title="&emsp;&emsp;1.  功能定制"></a>&emsp;&emsp;1.  功能定制</h4><p>&emsp;&emsp;&emsp;&emsp;-  是否启用可选功能。可选功能已经在第一节（功能）中说明。</p>
-<h4 id="emsp-emsp-2-样式定制"><a href="#emsp-emsp-2-样式定制" class="headerlink" title="&emsp;&emsp;2.  样式定制"></a>&emsp;&emsp;2.  样式定制</h4><p>&emsp;&emsp;如果有选择主题，样式定制将覆盖相应的主题样式。</p>
-<p>&emsp;&emsp;样式可定制的基本准则：</p>
-<p>&emsp;&emsp;&emsp;&emsp;1.  哪些样式可定制？——公共部件的样式；</p>
-<p>&emsp;&emsp;&emsp;&emsp;2.  什么是公共部件？——对整体组件的抽象提取后得到的部件或部件列表；</p>
-<p>&emsp;&emsp;&emsp;&emsp;3.  为什么？——确保整体组件的外观是和谐的。</p>
-<p>&emsp;&emsp;根据准则，提取公共部件如下：（打 <strong>*</strong> 号为默认值）</p>
-<p>&emsp;&emsp;&emsp;&emsp;1.  框型部件：<strong>[ &lt;&lt; | &lt; | page_no | &gt; | &gt;&gt; ]</strong> 可定制如下样式：</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  形状 <strong>shape</strong>: ‘square’* | ‘circle’ // 方形自带圆角</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  大小 <strong>size</strong>: initial* |’any_px_value’ // px 通过 px2em 转为 em</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  填充颜色 <strong>fillColor</strong>: initial* | ‘any_color_code’</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  文本颜色 <strong>textColor</strong>: initial* | ‘any_color_code’</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  文本大小 <strong>textSize</strong>: initial* | ‘any_px_value’</p>
-<p>&emsp;&emsp;&emsp;&emsp;2.  输入部件：<strong>[ enter_page_no ]</strong> 可定制如下样式：</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  继承框型部件样式 <strong>inhert</strong>: true* | false // 除了形状 <strong>shape</strong> 不能继承</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  占位符 <strong>placeholder</strong>: ‘current_page_no/total_page_no’* | ‘any_placeholder_text’ // 中间的斜杠是斜杠，不是或</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  位置 <strong>position</strong>: ‘lower’* | ‘upper’ // 见 二、样式 输入翻页 + 手动翻页</p>
-<p>&emsp;&emsp;&emsp;&emsp;3.  下拉部件：<strong>[ dropdown_page<em>no</em>[v] ] </strong>可定制如下样式：</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  继承框型部件样式 <strong>inhert</strong>: true* | false // 除了形状 <strong>shape</strong> 不能继承</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  占位符 <strong>placeholder</strong>: ‘current_page_no/total_page_no’* | ‘any_placeholder_text’ // 中间的斜杠是斜杠，不是或</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  位置 <strong>position</strong>: ‘lower’* | ‘upper’ // 见 二、样式 下拉翻页 + 手动翻页</p>
-<h4 id="emsp-emsp-3-主题定制"><a href="#emsp-emsp-3-主题定制" class="headerlink" title="&emsp;&emsp;3.  主题定制"></a>&emsp;&emsp;3.  主题定制</h4><p>&emsp;&emsp;主题就是一系列默认样式定制。选择主题后，可通过上述样式定制来修改主题。</p>
-<h3 id="四、接口（参数：父组件-gt-子组件）"><a href="#四、接口（参数：父组件-gt-子组件）" class="headerlink" title="四、接口（参数：父组件 -&gt; 子组件）"></a>四、接口（参数：父组件 -&gt; 子组件）</h3><p>&emsp;&emsp;-  总页数 <strong>totalPageNo</strong>: 0*<br>&emsp;&emsp;-  分页尺寸 <strong>pageSize</strong>: 8*<br>&emsp;&emsp;-  初始页码 <strong>initPageNo</strong>: 1*</p>
-<h3 id="五、接口（事件：子组件-gt-父组件）"><a href="#五、接口（事件：子组件-gt-父组件）" class="headerlink" title="五、接口（事件：子组件 -&gt; 父组件）"></a>五、接口（事件：子组件 -&gt; 父组件）</h3><p>&emsp;&emsp;-  翻页事件 <strong>onPageNoChange</strong> 带参数 <strong>currentPageNo</strong> 为当前页码。</p>
+        <p><strong>sublime</strong> 上编辑 <strong>evernote</strong> 笔记折腾了 <strong>1</strong> 个小时…</p>
+<h3 id="一、功能"><a href="#一、功能" class="headerlink" title="一、功能"></a>一、功能</h3><p>&emsp;&emsp;1.  首页（可选）<br>&emsp;&emsp;2.  上一页（必选）<br>&emsp;&emsp;3.  翻页（必选）<br>&emsp;&emsp;&emsp;&emsp;-  点击翻页（可选，直接点击页码）<br>&emsp;&emsp;&emsp;&emsp;-  手动翻页（可选，点击 [ … ] 以找到所需页码）<br>&emsp;&emsp;&emsp;&emsp;-  输入翻页（可选）<br>&emsp;&emsp;&emsp;&emsp;-  下拉翻页（可选）<br>&emsp;&emsp;4.  下一页（必选）<br>&emsp;&emsp;5.  末页（可选）  </p>
+<h3 id="二、样式"><a href="#二、样式" class="headerlink" title="二、样式"></a>二、样式</h3><h4 id="emsp-emsp-1-电脑端（所有功能）"><a href="#emsp-emsp-1-电脑端（所有功能）" class="headerlink" title="&emsp;&emsp;1.  电脑端（所有功能）"></a>&emsp;&emsp;1.  电脑端（所有功能）</h4><p>&emsp;&emsp;&emsp;&emsp;-  显示页码数 &gt;= 总页数 （此处假设 50 &gt;= 5）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ &gt; ] [ &gt;&gt; ]</strong>  </p>
+<p>&emsp;&emsp;&emsp;&emsp;-  显示页码数 &lt; 总页数 （此处假设 5 &lt; 50）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  手动翻页<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ … ] [ &gt; ] [ &gt;&gt; ]</strong>  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  输入翻页<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ enter_page_no ] [ &gt; ] [ &gt;&gt; ]</strong>  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  下拉翻页<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ dropdown_page<em>no</em>[v] ] [ &gt; ] [ &gt;&gt; ]</strong>  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  输入翻页 + 手动翻页 （上下位置可互换）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] <sup>[ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ … ]</sup> <sub>[ enter_page_no ]</sub> [ &gt; ] [ &gt;&gt; ]</strong>  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  下拉翻页 + 手动翻页 （上下位置可互换）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] <sup>[ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ … ]</sup> <sub>[ dropdown_page<em>no</em>[v] ]</sub>&gt; [ &gt; ] [ &gt;&gt; ]</strong>  </p>
+<h4 id="emsp-emsp-1-移动端（所有功能）"><a href="#emsp-emsp-1-移动端（所有功能）" class="headerlink" title="&emsp;&emsp;1.  移动端（所有功能）"></a>&emsp;&emsp;1.  移动端（所有功能）</h4><p>&emsp;&emsp;&emsp;&emsp;和电脑端（所有功能）一致，只是页码器宽度要自适应屏幕宽度.  </p>
+<h3 id="三、定制"><a href="#三、定制" class="headerlink" title="三、定制"></a>三、定制</h3><h4 id="emsp-emsp-1-功能定制"><a href="#emsp-emsp-1-功能定制" class="headerlink" title="&emsp;&emsp;1.  功能定制"></a>&emsp;&emsp;1.  功能定制</h4><p>&emsp;&emsp;&emsp;&emsp;-  是否启用可选功能。可选功能已经在第一节（功能）中说明。  </p>
+<h4 id="emsp-emsp-2-样式定制"><a href="#emsp-emsp-2-样式定制" class="headerlink" title="&emsp;&emsp;2.  样式定制"></a>&emsp;&emsp;2.  样式定制</h4><p>&emsp;&emsp;&emsp;&emsp;如果有选择主题，样式定制将覆盖相应的主题样式。  </p>
+<p>&emsp;&emsp;&emsp;&emsp;样式可定制的基本准则：  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1.  哪些样式可定制？——公共部件的样式；  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;2.  什么是公共部件？——对整体组件的抽象提取后得到的部件或部件列表；  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;3.  为什么？——确保整体组件的外观是和谐的。  </p>
+<p>&emsp;&emsp;&emsp;&emsp;根据准则，提取公共部件如下：（打 <strong>*</strong> 号为默认值）  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1.  框型部件：<strong>[ &lt;&lt; | &lt; | page_no | &gt; | &gt;&gt; ]</strong> 可定制如下样式：  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  形状 <strong>shape</strong>: ‘square’* | ‘circle’ // 方形自带圆角  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  大小 <strong>size</strong>: initial* |’any_px_value’ // px 通过 px2em 转为 em  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  填充颜色 <strong>fillColor</strong>: initial* | ‘any_color_code’  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  文本颜色 <strong>textColor</strong>: initial* | ‘any_color_code’  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  文本大小 <strong>textSize</strong>: initial* | ‘any_px_value’  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;2.  输入部件：<strong>[ enter_page_no ]</strong> 可定制如下样式：  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  继承框型部件样式 <strong>inhert</strong>: true* | false // 除了形状 <strong>shape</strong> 不能继承  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  占位符 <strong>placeholder</strong>: ‘current_page_no/total_page_no’* | ‘any_placeholder_text’ // 中间的斜杠是斜杠，不是或  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  位置 <strong>position</strong>: ‘lower’* | ‘upper’ // 见 二、样式 输入翻页 + 手动翻页  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;3.  下拉部件：<strong>[ dropdown_page<em>no</em>[v] ] </strong>可定制如下样式：  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  继承框型部件样式 <strong>inhert</strong>: true* | false // 除了形状 <strong>shape</strong> 不能继承  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  占位符 <strong>placeholder</strong>: ‘current_page_no/total_page_no’* | ‘any_placeholder_text’ // 中间的斜杠是斜杠，不是或  </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  位置 <strong>position</strong>: ‘lower’* | ‘upper’ // 见 二、样式 下拉翻页 + 手动翻页  </p>
+<h4 id="emsp-emsp-3-主题定制"><a href="#emsp-emsp-3-主题定制" class="headerlink" title="&emsp;&emsp;3.  主题定制"></a>&emsp;&emsp;3.  主题定制</h4><p>&emsp;&emsp;主题就是一系列默认样式定制。选择主题后，可通过上述样式定制来修改主题。  </p>
+<h3 id="四、接口"><a href="#四、接口" class="headerlink" title="四、接口"></a>四、接口</h3><h4 id="emsp-emsp-1-参数：父组件-gt-子组件"><a href="#emsp-emsp-1-参数：父组件-gt-子组件" class="headerlink" title="&emsp;&emsp;1.  参数：父组件 -&gt; 子组件"></a>&emsp;&emsp;1.  参数：父组件 -&gt; 子组件</h4><p>&emsp;&emsp;&emsp;&emsp;-  总页数 <strong>totalPageNo</strong>: 0<em><br>&emsp;&emsp;&emsp;&emsp;-  分页尺寸 <strong>pageSize</strong>: 8</em><br>&emsp;&emsp;&emsp;&emsp;-  初始页码 <strong>initPageNo</strong>: 1*    </p>
+<h4 id="emsp-emsp-2-事件：子组件-gt-父组件"><a href="#emsp-emsp-2-事件：子组件-gt-父组件" class="headerlink" title="&emsp;&emsp;2.  事件：子组件 -&gt; 父组件"></a>&emsp;&emsp;2.  事件：子组件 -&gt; 父组件</h4><p>&emsp;&emsp;&emsp;&emsp;-  翻页事件 <strong>onPageNoChange</strong> 带参数 <strong>currentPageNo</strong> 为当前页码。   </p>
 
       
       
@@ -280,7 +280,7 @@
         <p><span>本文标题:</span><a href="/2017/07/08/【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08/">【vue组件开发日志】第5天：页码器组件 Paginator.vue 需求分析 2017-07-07</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 catcuts 的个人博客">catcuts</a></p>
         <p><span>发布时间:</span>2017年07月08日 - 21时30分</p>
-        <p><span>最后更新:</span>2017年07月08日 - 21时48分</p>
+        <p><span>最后更新:</span>2017年07月09日 - 06时00分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/07/08/【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08/" title="【vue组件开发日志】第5天：页码器组件 Paginator.vue 需求分析 2017-07-07">http://yoursite.com/2017/07/08/【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/08/【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08/　　作者: catcuts" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -309,7 +309,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、功能"><span class="toc-number">1.</span> <span class="toc-text">一、功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、样式"><span class="toc-number">2.</span> <span class="toc-text">二、样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-1-电脑端（所有功能）"><span class="toc-number">2.1.</span> <span class="toc-text">  1.  电脑端（所有功能）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-1-移动端（所有功能）"><span class="toc-number">2.2.</span> <span class="toc-text">  1.  移动端（所有功能）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、定制"><span class="toc-number">3.</span> <span class="toc-text">三、定制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-1-功能定制"><span class="toc-number">3.1.</span> <span class="toc-text">  1.  功能定制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-2-样式定制"><span class="toc-number">3.2.</span> <span class="toc-text">  2.  样式定制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-3-主题定制"><span class="toc-number">3.3.</span> <span class="toc-text">  3.  主题定制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、接口（参数：父组件-gt-子组件）"><span class="toc-number">4.</span> <span class="toc-text">四、接口（参数：父组件 -> 子组件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、接口（事件：子组件-gt-父组件）"><span class="toc-number">5.</span> <span class="toc-text">五、接口（事件：子组件 -> 父组件）</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、功能"><span class="toc-number">1.</span> <span class="toc-text">一、功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、样式"><span class="toc-number">2.</span> <span class="toc-text">二、样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-1-电脑端（所有功能）"><span class="toc-number">2.1.</span> <span class="toc-text">  1.  电脑端（所有功能）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-1-移动端（所有功能）"><span class="toc-number">2.2.</span> <span class="toc-text">  1.  移动端（所有功能）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、定制"><span class="toc-number">3.</span> <span class="toc-text">三、定制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-1-功能定制"><span class="toc-number">3.1.</span> <span class="toc-text">  1.  功能定制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-2-样式定制"><span class="toc-number">3.2.</span> <span class="toc-text">  2.  样式定制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-3-主题定制"><span class="toc-number">3.3.</span> <span class="toc-text">  3.  主题定制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、接口"><span class="toc-number">4.</span> <span class="toc-text">四、接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-1-参数：父组件-gt-子组件"><span class="toc-number">4.1.</span> <span class="toc-text">  1.  参数：父组件 -> 子组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-2-事件：子组件-gt-父组件"><span class="toc-number">4.2.</span> <span class="toc-text">  2.  事件：子组件 -> 父组件</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
