@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03 | Catlog</title>
+  <title>【vue组件开发日志】第5天：页码器组件 Paginator.vue 需求分析 2017-07-07 | Catlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="整个vue组件开发流程可以归结为：搭建 → 开发 → 打包 → 测试 → 发布。流程中的每一个环节都包含一项或多项技术：...">
+  <meta name="description" content="明确需求，稳扎稳打">
 <meta name="keywords" content="vue组件开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03">
-<meta property="og:url" content="http://yoursite.com/2017/07/04/【vue组件开发日志】第1天：总览技术栈，搭建脚手架-2017-07-03/index.html">
+<meta property="og:title" content="【vue组件开发日志】第5天：页码器组件 Paginator.vue 需求分析 2017-07-07">
+<meta property="og:url" content="http://yoursite.com/2017/07/08/【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08/index.html">
 <meta property="og:site_name" content="Catlog">
-<meta property="og:description" content="整个vue组件开发流程可以归结为：搭建 → 开发 → 打包 → 测试 → 发布。流程中的每一个环节都包含一项或多项技术：...">
-<meta property="og:updated_time" content="2017-07-06T11:36:21.799Z">
+<meta property="og:description" content="明确需求，稳扎稳打">
+<meta property="og:updated_time" content="2017-07-08T13:48:04.207Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03">
-<meta name="twitter:description" content="整个vue组件开发流程可以归结为：搭建 → 开发 → 打包 → 测试 → 发布。流程中的每一个环节都包含一项或多项技术：...">
+<meta name="twitter:title" content="【vue组件开发日志】第5天：页码器组件 Paginator.vue 需求分析 2017-07-07">
+<meta name="twitter:description" content="明确需求，稳扎稳打">
   
     <link rel="alternative" href="/atom.xml" title="Catlog" type="application/atom+xml">
   
@@ -151,11 +151,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-【vue组件开发日志】第1天：总览技术栈，搭建脚手架-2017-07-03" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/04/【vue组件开发日志】第1天：总览技术栈，搭建脚手架-2017-07-03/" class="article-date">
-      <time datetime="2017-07-04T13:05:31.000Z" itemprop="datePublished">2017-07-04</time>
+      <a href="/2017/07/08/【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08/" class="article-date">
+      <time datetime="2017-07-08T13:30:31.000Z" itemprop="datePublished">2017-07-08</time>
 </a>
     </div>
   
@@ -168,7 +168,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03
+      【vue组件开发日志】第5天：页码器组件 Paginator.vue 需求分析 2017-07-07
     </h1>
   
 
@@ -189,18 +189,39 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Hello, First Commit!</p>
-<h1 id="一、总览技术栈"><a href="#一、总览技术栈" class="headerlink" title="一、总览技术栈"></a>一、总览技术栈</h1><p>整个<strong>vue组件开发流程</strong>可以归结为：</p>
-<p><strong>搭建</strong> → <strong>开发</strong> → <strong>打包</strong> → <strong>测试</strong> → <strong>发布</strong></p>
-<p>流程中的每一个环节都包含一项或多项技术：</p>
-<ul>
-<li><strong>搭建</strong>：使用<strong>vue-cli</strong>自动生成一套脚手架，使用<strong>npm</strong>工具安装和管理依赖包</li>
-<li><strong>开发</strong>：使用<strong>vue</strong>+<strong>vuex</strong>+<strong>vue-router</strong> + <strong>h5</strong>(<strong>html5</strong>+<strong>js</strong>+<strong>css3</strong>)+<strong>es6</strong>+<strong>postcss</strong>开发组件，使用其他插件(<strong>babel</strong>+<strong>eslint</strong>+<strong>editor</strong> + <strong>…</strong>)辅助开发</li>
-<li><strong>打包</strong>：使用<strong>webpack</strong>+<strong>gulp</strong>打包组件库</li>
-<li><strong>测试</strong>：使用<strong>krama</strong>+<strong>nightwatch</strong>+<strong>mock</strong>分别进行<strong>unit test</strong>+<strong>e2e test</strong></li>
-<li><strong>发布</strong>：使用<strong>npm</strong>发布</li>
-</ul>
-<h1 id="二、搭建脚手架"><a href="#二、搭建脚手架" class="headerlink" title="二、搭建脚手架"></a>二、搭建脚手架</h1><p>实践参考：<a href="http://www.jianshu.com/p/2769efeaa10a" target="_blank" rel="external">http://www.jianshu.com/p/2769efeaa10a</a></p>
+        <p>为了在 <strong>sublime</strong> 编辑 <strong>evernote</strong> 笔记折腾了 <strong>1</strong> 个小时…</p>
+<h3 id="一、功能"><a href="#一、功能" class="headerlink" title="一、功能"></a>一、功能</h3><p>&emsp;&emsp;1.  首页（可选）<br>&emsp;&emsp;2.  上一页（必选）<br>&emsp;&emsp;3.  翻页（必选）<br>&emsp;&emsp;&emsp;&emsp;-  点击翻页（可选，直接点击页码）<br>&emsp;&emsp;&emsp;&emsp;-  手动翻页（可选，点击 [ … ] 以找到所需页码）<br>&emsp;&emsp;&emsp;&emsp;-  输入翻页（可选）<br>&emsp;&emsp;&emsp;&emsp;-  下拉翻页（可选）<br>&emsp;&emsp;4.  下一页（必选）<br>&emsp;&emsp;5.  末页（可选）</p>
+<h3 id="二、样式"><a href="#二、样式" class="headerlink" title="二、样式"></a>二、样式</h3><h4 id="emsp-emsp-1-电脑端（所有功能）"><a href="#emsp-emsp-1-电脑端（所有功能）" class="headerlink" title="&emsp;&emsp;1.  电脑端（所有功能）"></a>&emsp;&emsp;1.  电脑端（所有功能）</h4><p>&emsp;&emsp;&emsp;&emsp;-  显示页码数 &gt;= 总页数 （此处假设 50 &gt;= 5）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ &gt; ] [ &gt;&gt; ]</strong></p>
+<p>&emsp;&emsp;&emsp;&emsp;-  显示页码数 &lt; 总页数 （此处假设 5 &lt; 50）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  手动翻页<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ … ] [ &gt; ] [ &gt;&gt; ]</strong></p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  输入翻页<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ enter_page_no ] [ &gt; ] [ &gt;&gt; ]</strong></p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  下拉翻页<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] [ dropdown_page<em>no</em>[v] ] [ &gt; ] [ &gt;&gt; ]</strong></p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  输入翻页 + 手动翻页 （上下位置可互换）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] <sup>[ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ … ]</sup> <sub>[ enter_page_no ]</sub> [ &gt; ] [ &gt;&gt; ]</strong></p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  下拉翻页 + 手动翻页 （上下位置可互换）<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>[ &lt;&lt; ] [ &lt; ] <sup>[ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ … ]</sup> <sub>[ dropdown_page<em>no</em>[v] ]</sub>&gt; [ &gt; ] [ &gt;&gt; ]</strong></p>
+<h4 id="emsp-emsp-1-移动端（所有功能）"><a href="#emsp-emsp-1-移动端（所有功能）" class="headerlink" title="&emsp;&emsp;1.  移动端（所有功能）"></a>&emsp;&emsp;1.  移动端（所有功能）</h4><p>&emsp;&emsp;&emsp;&emsp;和电脑端（所有功能）一致，只是页码器宽度要自适应屏幕宽度.</p>
+<h3 id="三、定制"><a href="#三、定制" class="headerlink" title="三、定制"></a>三、定制</h3><h4 id="emsp-emsp-1-功能定制"><a href="#emsp-emsp-1-功能定制" class="headerlink" title="&emsp;&emsp;1.  功能定制"></a>&emsp;&emsp;1.  功能定制</h4><p>&emsp;&emsp;&emsp;&emsp;-  是否启用可选功能。可选功能已经在第一节（功能）中说明。</p>
+<h4 id="emsp-emsp-2-样式定制"><a href="#emsp-emsp-2-样式定制" class="headerlink" title="&emsp;&emsp;2.  样式定制"></a>&emsp;&emsp;2.  样式定制</h4><p>&emsp;&emsp;如果有选择主题，样式定制将覆盖相应的主题样式。</p>
+<p>&emsp;&emsp;样式可定制的基本准则：</p>
+<p>&emsp;&emsp;&emsp;&emsp;1.  哪些样式可定制？——公共部件的样式；</p>
+<p>&emsp;&emsp;&emsp;&emsp;2.  什么是公共部件？——对整体组件的抽象提取后得到的部件或部件列表；</p>
+<p>&emsp;&emsp;&emsp;&emsp;3.  为什么？——确保整体组件的外观是和谐的。</p>
+<p>&emsp;&emsp;根据准则，提取公共部件如下：（打 <strong>*</strong> 号为默认值）</p>
+<p>&emsp;&emsp;&emsp;&emsp;1.  框型部件：<strong>[ &lt;&lt; | &lt; | page_no | &gt; | &gt;&gt; ]</strong> 可定制如下样式：</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  形状 <strong>shape</strong>: ‘square’* | ‘circle’ // 方形自带圆角</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  大小 <strong>size</strong>: initial* |’any_px_value’ // px 通过 px2em 转为 em</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  填充颜色 <strong>fillColor</strong>: initial* | ‘any_color_code’</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  文本颜色 <strong>textColor</strong>: initial* | ‘any_color_code’</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  文本大小 <strong>textSize</strong>: initial* | ‘any_px_value’</p>
+<p>&emsp;&emsp;&emsp;&emsp;2.  输入部件：<strong>[ enter_page_no ]</strong> 可定制如下样式：</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  继承框型部件样式 <strong>inhert</strong>: true* | false // 除了形状 <strong>shape</strong> 不能继承</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  占位符 <strong>placeholder</strong>: ‘current_page_no/total_page_no’* | ‘any_placeholder_text’ // 中间的斜杠是斜杠，不是或</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  位置 <strong>position</strong>: ‘lower’* | ‘upper’ // 见 二、样式 输入翻页 + 手动翻页</p>
+<p>&emsp;&emsp;&emsp;&emsp;3.  下拉部件：<strong>[ dropdown_page<em>no</em>[v] ] </strong>可定制如下样式：</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  继承框型部件样式 <strong>inhert</strong>: true* | false // 除了形状 <strong>shape</strong> 不能继承</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  占位符 <strong>placeholder</strong>: ‘current_page_no/total_page_no’* | ‘any_placeholder_text’ // 中间的斜杠是斜杠，不是或</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;-  位置 <strong>position</strong>: ‘lower’* | ‘upper’ // 见 二、样式 下拉翻页 + 手动翻页</p>
+<h4 id="emsp-emsp-3-主题定制"><a href="#emsp-emsp-3-主题定制" class="headerlink" title="&emsp;&emsp;3.  主题定制"></a>&emsp;&emsp;3.  主题定制</h4><p>&emsp;&emsp;主题就是一系列默认样式定制。选择主题后，可通过上述样式定制来修改主题。</p>
+<h3 id="四、接口（参数：父组件-gt-子组件）"><a href="#四、接口（参数：父组件-gt-子组件）" class="headerlink" title="四、接口（参数：父组件 -&gt; 子组件）"></a>四、接口（参数：父组件 -&gt; 子组件）</h3><p>&emsp;&emsp;-  总页数 <strong>totalPageNo</strong>: 0*<br>&emsp;&emsp;-  分页尺寸 <strong>pageSize</strong>: 8*<br>&emsp;&emsp;-  初始页码 <strong>initPageNo</strong>: 1*</p>
+<h3 id="五、接口（事件：子组件-gt-父组件）"><a href="#五、接口（事件：子组件-gt-父组件）" class="headerlink" title="五、接口（事件：子组件 -&gt; 父组件）"></a>五、接口（事件：子组件 -&gt; 父组件）</h3><p>&emsp;&emsp;-  翻页事件 <strong>onPageNoChange</strong> 带参数 <strong>currentPageNo</strong> 为当前页码。</p>
 
       
       
@@ -256,13 +277,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/07/04/【vue组件开发日志】第1天：总览技术栈，搭建脚手架-2017-07-03/">【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03</a></p>
+        <p><span>本文标题:</span><a href="/2017/07/08/【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08/">【vue组件开发日志】第5天：页码器组件 Paginator.vue 需求分析 2017-07-07</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 catcuts 的个人博客">catcuts</a></p>
-        <p><span>发布时间:</span>2017年07月04日 - 21时05分</p>
-        <p><span>最后更新:</span>2017年07月06日 - 19时36分</p>
+        <p><span>发布时间:</span>2017年07月08日 - 21时30分</p>
+        <p><span>最后更新:</span>2017年07月08日 - 21时48分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/07/04/【vue组件开发日志】第1天：总览技术栈，搭建脚手架-2017-07-03/" title="【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03">http://yoursite.com/2017/07/04/【vue组件开发日志】第1天：总览技术栈，搭建脚手架-2017-07-03/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/04/【vue组件开发日志】第1天：总览技术栈，搭建脚手架-2017-07-03/　　作者: catcuts" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/08/【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08/" title="【vue组件开发日志】第5天：页码器组件 Paginator.vue 需求分析 2017-07-07">http://yoursite.com/2017/07/08/【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/08/【vue组件开发日志】第5天：页码器组件-Paginator-vue-需求分析-2017-07-08/　　作者: catcuts" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -275,18 +296,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/07/05/【vue组件开发日志】第2天：调研-PostCSS-2017-07-04/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          【vue组件开发日志】第2天：调研 PostCSS 2017-07-08
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/07/04/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2017/07/07/【vue组件开发日志】第4天：注解-vuejs-模板项目的-webpack-配置-2017-07-06/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【vue组件开发日志】第4天：注解项目 webpack 配置 2017-07-06</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -297,7 +309,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、总览技术栈"><span class="toc-number">1.</span> <span class="toc-text">一、总览技术栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、搭建脚手架"><span class="toc-number">2.</span> <span class="toc-text">二、搭建脚手架</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、功能"><span class="toc-number">1.</span> <span class="toc-text">一、功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、样式"><span class="toc-number">2.</span> <span class="toc-text">二、样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-1-电脑端（所有功能）"><span class="toc-number">2.1.</span> <span class="toc-text">  1.  电脑端（所有功能）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-1-移动端（所有功能）"><span class="toc-number">2.2.</span> <span class="toc-text">  1.  移动端（所有功能）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、定制"><span class="toc-number">3.</span> <span class="toc-text">三、定制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-1-功能定制"><span class="toc-number">3.1.</span> <span class="toc-text">  1.  功能定制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-2-样式定制"><span class="toc-number">3.2.</span> <span class="toc-text">  2.  样式定制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#emsp-emsp-3-主题定制"><span class="toc-number">3.3.</span> <span class="toc-text">  3.  主题定制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、接口（参数：父组件-gt-子组件）"><span class="toc-number">4.</span> <span class="toc-text">四、接口（参数：父组件 -> 子组件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、接口（事件：子组件-gt-父组件）"><span class="toc-number">5.</span> <span class="toc-text">五、接口（事件：子组件 -> 父组件）</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -354,13 +366,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/07/05/【vue组件开发日志】第2天：调研-PostCSS-2017-07-04/" title="上一篇: 【vue组件开发日志】第2天：调研 PostCSS 2017-07-08">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/07/04/hello-world/" title="下一篇: Hello World">
+            <a href="/2017/07/07/【vue组件开发日志】第4天：注解-vuejs-模板项目的-webpack-配置-2017-07-06/" title="下一篇: 【vue组件开发日志】第4天：注解项目 webpack 配置 2017-07-06">
                 <i class="fa fa-angle-right"></i>
             </a>
         
