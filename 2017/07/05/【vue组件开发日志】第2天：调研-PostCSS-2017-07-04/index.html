@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>【vue组件开发日志】第2天：调研 PostCSS 2017-07-04 | Catlog</title>
+  <title>【vue组件开发日志】第2天：调研 PostCSS 2017-07-08 | Catlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="&amp;emsp;&amp;emsp;PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者根据处理需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的要求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixer”，同时，在 autoprefixer 中，还可以进行更多细节配置，如">
 <meta name="keywords" content="vue组件开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【vue组件开发日志】第2天：调研 PostCSS 2017-07-04">
-<meta property="og:url" content="http://yoursite.com/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/index.html">
+<meta property="og:title" content="【vue组件开发日志】第2天：调研 PostCSS 2017-07-08">
+<meta property="og:url" content="http://yoursite.com/2017/07/05/【vue组件开发日志】第2天：调研-PostCSS-2017-07-04/index.html">
 <meta property="og:site_name" content="Catlog">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者根据处理需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的要求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixer”，同时，在 autoprefixer 中，还可以进行更多细节配置，如">
-<meta property="og:updated_time" content="2017-07-06T11:36:17.454Z">
+<meta property="og:updated_time" content="2017-07-08T12:06:43.507Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【vue组件开发日志】第2天：调研 PostCSS 2017-07-04">
+<meta name="twitter:title" content="【vue组件开发日志】第2天：调研 PostCSS 2017-07-08">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者根据处理需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的要求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixer”，同时，在 autoprefixer 中，还可以进行更多细节配置，如">
   
     <link rel="alternative" href="/atom.xml" title="Catlog" type="application/atom+xml">
@@ -151,10 +151,10 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-【vue组件开发日志】第二天：调研-PostCSS-2017-07-04" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-【vue组件开发日志】第2天：调研-PostCSS-2017-07-04" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/" class="article-date">
+      <a href="/2017/07/05/【vue组件开发日志】第2天：调研-PostCSS-2017-07-04/" class="article-date">
       <time datetime="2017-07-05T13:34:42.000Z" itemprop="datePublished">2017-07-05</time>
 </a>
     </div>
@@ -168,7 +168,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【vue组件开发日志】第2天：调研 PostCSS 2017-07-04
+      【vue组件开发日志】第2天：调研 PostCSS 2017-07-08
     </h1>
   
 
@@ -204,10 +204,14 @@
 <li><p>在 <strong>webpack</strong> 中使用：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"><span class="comment">// 其他配置...</span></div><div class="line">	plugins: [</div><div class="line">		<span class="keyword">new</span> webpack.LoaderOptionsPlugin(&#123;</div><div class="line">			<span class="attr">vue</span>: &#123;</div><div class="line">			<span class="comment">// 使用用户自定义插件</span></div><div class="line">				postcss: [<span class="built_in">require</span>(<span class="string">'postcss-cssnext'</span>)()] <span class="comment">//除了接受插件的数组，postcss 选项也接受...</span></div><div class="line">			&#125;</div><div class="line">		&#125;)</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>在 <strong>vue-loader</strong> 中使用：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//vue-loader.conf.js</span></div><div class="line"><span class="keyword">var</span> utils = <span class="built_in">require</span>(<span class="string">'./utils'</span>)</div><div class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>)</div><div class="line"><span class="keyword">var</span> isProduction = process.env.NODE_ENV === <span class="string">'production'</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">	<span class="attr">loaders</span>: utils.cssLoaders(&#123;</div><div class="line">		<span class="attr">sourceMap</span>: isProduction</div><div class="line">			? config.build.productionSourceMap</div><div class="line">			: config.dev.cssSourceMap,</div><div class="line">		<span class="attr">extract</span>: isProduction</div><div class="line">	&#125;),</div><div class="line">	<span class="attr">postcss</span>: [</div><div class="line">		<span class="built_in">require</span>(<span class="string">'autoprefixer'</span>)(&#123;</div><div class="line">				<span class="attr">browsers</span>: [<span class="string">'last 2 versions'</span>]</div><div class="line">		&#125;)</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li><p>在 <strong>vue-loader</strong> 中使用：（ <strong>postcss</strong> 作为 <strong>vue-loader</strong> 的一个选项 ）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="comment">// other options...</span></div><div class="line">  <span class="built_in">module</span>: &#123;</div><div class="line">    <span class="comment">// module.rules is the same as module.loaders in 1.x</span></div><div class="line">    rules: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.vue$/</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">'vue-loader'</span>,</div><div class="line">        <span class="comment">// vue-loader options goes here</span></div><div class="line">        options: &#123;</div><div class="line">          <span class="comment">// ...</span></div><div class="line">          postcss: [<span class="built_in">require</span>(<span class="string">'postcss-cssnext'</span>)()]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>直接使用 <strong>postcss-loader</strong> ：（这也是 <strong>vue-cli</strong> 模板项目中的用法）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// vue-loader.conf.js</span></div><div class="line"><span class="keyword">var</span> utils = <span class="built_in">require</span>(<span class="string">'./utils'</span>)</div><div class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>)</div><div class="line"><span class="keyword">var</span> isProduction = process.env.NODE_ENV === <span class="string">'production'</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">	<span class="attr">loaders</span>: utils.cssLoaders(&#123;</div><div class="line">		<span class="attr">sourceMap</span>: isProduction</div><div class="line">			? config.build.productionSourceMap</div><div class="line">			: config.dev.cssSourceMap,</div><div class="line">		<span class="attr">extract</span>: isProduction</div><div class="line">	&#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// utils.js</span></div><div class="line"><span class="comment">// ... the previous is emitted</span></div><div class="line"><span class="comment">// 处理 vue 内的 CSS</span></div><div class="line">exports.cssLoaders = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</div><div class="line">  options = options || &#123;&#125;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> cssLoader = &#123;</div><div class="line">    <span class="attr">loader</span>: <span class="string">'css-loader'</span>,</div><div class="line">    <span class="attr">options</span>: &#123;</div><div class="line">      <span class="attr">minimize</span>: process.env.NODE_ENV === <span class="string">'production'</span>,</div><div class="line">      <span class="attr">sourceMap</span>: options.sourceMap</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// generate loader string to be used with extract text plugin</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">generateLoaders</span> (<span class="params">loader, loaderOptions</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> loaders = [cssLoader]</div><div class="line">    <span class="keyword">if</span> (loader) &#123;</div><div class="line">      loaders.push(&#123;</div><div class="line">        <span class="attr">loader</span>: loader + <span class="string">'-loader'</span>,</div><div class="line">        <span class="attr">options</span>: <span class="built_in">Object</span>.assign(&#123;&#125;, loaderOptions, &#123;</div><div class="line">          <span class="attr">sourceMap</span>: options.sourceMap <span class="comment">// 这些 *-loader 都可以设置 sourceMap 选项</span></div><div class="line">        &#125;)</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Extract CSS when that option is specified</span></div><div class="line">    <span class="comment">// (which is the case during production build)</span></div><div class="line">    <span class="keyword">if</span> (options.extract) &#123; <span class="comment">// 生产模式下提取 CSS 到单独一个文件</span></div><div class="line">      <span class="keyword">return</span> ExtractTextPlugin.extract(&#123;</div><div class="line">        <span class="attr">use</span>: loaders,</div><div class="line">        <span class="attr">fallback</span>: <span class="string">'vue-style-loader'</span></div><div class="line">      &#125;)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> [<span class="string">'vue-style-loader'</span>].concat(loaders) <span class="comment">// 每个 样式-loader 都要加上 vue-style-loader，</span></div><div class="line">    &#125;                                             <span class="comment">// 因为 v-s-l 要先把组件样式处理成这些 样式-loader 能处理的格式</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// https://vue-loader.vuejs.org/en/configurations/extract-css.html</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">css</span>: generateLoaders(),</div><div class="line">    <span class="attr">postcss</span>: generateLoaders(),</div><div class="line">    <span class="attr">less</span>: generateLoaders(<span class="string">'less'</span>),</div><div class="line">    <span class="attr">sass</span>: generateLoaders(<span class="string">'sass'</span>, &#123; <span class="attr">indentedSyntax</span>: <span class="literal">true</span> &#125;),</div><div class="line">    <span class="attr">scss</span>: generateLoaders(<span class="string">'sass'</span>),</div><div class="line">    <span class="attr">stylus</span>: generateLoaders(<span class="string">'stylus'</span>),</div><div class="line">    <span class="attr">styl</span>: generateLoaders(<span class="string">'stylus'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// ... the next is emitted</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
+<p>&emsp;&emsp;<strong>postcss-loader</strong> 包含了 <strong>autoprefixer</strong> 和 <strong>cssnext</strong> 的功能。</p>
 <h3 id="五、PostCSS-插件一览"><a href="#五、PostCSS-插件一览" class="headerlink" title="五、PostCSS 插件一览"></a>五、<strong>PostCSS</strong> 插件一览</h3><ul>
 <li><a href="https://github.com/postcss/autoprefixer" target="_blank" rel="external">Autoprefixer</a></li>
 <li><a href="http://cssnext.io/" target="_blank" rel="external">CSSnext</a></li>
@@ -285,13 +289,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/">【vue组件开发日志】第2天：调研 PostCSS 2017-07-04</a></p>
+        <p><span>本文标题:</span><a href="/2017/07/05/【vue组件开发日志】第2天：调研-PostCSS-2017-07-04/">【vue组件开发日志】第2天：调研 PostCSS 2017-07-08</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 catcuts 的个人博客">catcuts</a></p>
         <p><span>发布时间:</span>2017年07月05日 - 21时34分</p>
-        <p><span>最后更新:</span>2017年07月06日 - 19时36分</p>
+        <p><span>最后更新:</span>2017年07月08日 - 20时06分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/" title="【vue组件开发日志】第2天：调研 PostCSS 2017-07-04">http://yoursite.com/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/　　作者: catcuts" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/05/【vue组件开发日志】第2天：调研-PostCSS-2017-07-04/" title="【vue组件开发日志】第2天：调研 PostCSS 2017-07-08">http://yoursite.com/2017/07/05/【vue组件开发日志】第2天：调研-PostCSS-2017-07-04/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/05/【vue组件开发日志】第2天：调研-PostCSS-2017-07-04/　　作者: catcuts" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -314,7 +318,7 @@
     </a>
   
   
-    <a href="/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/07/04/【vue组件开发日志】第1天：总览技术栈，搭建脚手架-2017-07-03/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03</div>
       <strong class="article-nav-caption">></strong>
     </a>
@@ -389,12 +393,12 @@
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/" title="下一篇: 【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03">
+            <a href="/2017/07/04/【vue组件开发日志】第1天：总览技术栈，搭建脚手架-2017-07-03/" title="下一篇: 【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/07/【vue组件开发日志】第4天：注解-vuejs-模板项目的-webpack-配置-2017-07-06/">【vue组件开发日志】第4天：注解项目 webpack 配置 2017-07-06</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/">【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/05/【vue组件开发日志】第二天：调研-PostCSS-2017-07-04/">【vue组件开发日志】第2天：调研 PostCSS 2017-07-04</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/04/【vue组件开发日志】第一天：总览技术栈，搭建脚手架-2017-07-03/">【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/04/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/07/【vue组件开发日志】第4天：注解-vuejs-模板项目的-webpack-配置-2017-07-06/">【vue组件开发日志】第4天：注解项目 webpack 配置 2017-07-06</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目-2017-07-05/">【vue组件开发日志】第3天：开始使用 vuejs 模板项目 2017-07-05</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/05/【vue组件开发日志】第2天：调研-PostCSS-2017-07-04/">【vue组件开发日志】第2天：调研 PostCSS 2017-07-08</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/04/【vue组件开发日志】第1天：总览技术栈，搭建脚手架-2017-07-03/">【vue组件开发日志】第1天：总览技术栈，搭建脚手架 2017-07-03</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/04/hello-world/">Hello World</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
