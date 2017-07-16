@@ -1,0 +1,771 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vue组件开发," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者根据处理需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的要求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixer”，同时，在 autoprefixer 中，还可以进行更多细节配置，如">
+<meta name="keywords" content="vue组件开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【vue组件开发日志】第2天：初探 PostCSS">
+<meta property="og:url" content="http://yoursite.com/2017/07/05/【vue组件开发日志】第2天：初探-PostCSS/index.html">
+<meta property="og:site_name" content="Catlog">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者根据处理需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的要求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixer”，同时，在 autoprefixer 中，还可以进行更多细节配置，如">
+<meta property="og:updated_time" content="2017-07-16T11:33:10.879Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【vue组件开发日志】第2天：初探 PostCSS">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者根据处理需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的要求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixer”，同时，在 autoprefixer 中，还可以进行更多细节配置，如">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/05/【vue组件开发日志】第2天：初探-PostCSS/"/>
+
+
+
+
+
+  <title> 【vue组件开发日志】第2天：初探 PostCSS | Catlog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Catlog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">by ProgrammingCat</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/05/【vue组件开发日志】第2天：初探-PostCSS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="catcuts">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/catcuts.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Catlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                【vue组件开发日志】第2天：初探 PostCSS
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-05T21:34:42+08:00">
+                2017-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  &emsp;&emsp;PostCSS 用来对开发者编写的 css 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者根据处理需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的要求。比如，开发者有对 css 语句自动加浏览器前缀的需求，于是选择 PostCSS 的一款插件，名为“autoprefixer”，同时，在 autoprefixer 中，还可以进行更多细节配置，如“是否保留或自动移除开发者编写的 css 语句中的不必要的前缀”等。其他满足不同需求的插件还有：“CSSNext”（让开发者使用 css4 书写 css ，自动编译成目前浏览器支持的 css 语句）、“px2rem”（顾名思义，px 单位转 rem 单位，rem 更擅长自适应布局）等。 &emsp;&emsp;有人说，PostCSS 不是预处理器，也不是后处理器，不是“未来的语法”，也不是清理或优化工具，但凡是它们能是实现的，它都能做到。这其实就是在说，PostCSS 是什么，就看你需要什么了。...
+
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Hi, Welcome Back.</p>
+<h3 id="一、PostCSS-是什么"><a href="#一、PostCSS-是什么" class="headerlink" title="一、PostCSS 是什么"></a>一、<strong>PostCSS</strong> 是什么</h3><p>&emsp;&emsp;<strong>PostCSS</strong> 用来对开发者编写的 <strong>css</strong> 文档进行自动化处理的一种工具集合，这个集合中的工具可以由开发者根据处理需求，自由选取和搭配，同时每个工具还可以进行配置，以满足更细化的要求。比如，开发者有对 <strong>css</strong> 语句自动加浏览器前缀的需求，于是选择 <strong>PostCSS</strong> 的一款插件，名为“<strong>autoprefixer</strong>”，同时，在 <strong>autoprefixer</strong> 中，还可以进行更多细节配置，如“是否保留或自动移除开发者编写的 <strong>css</strong> 语句中的不必要的前缀”等。其他满足不同需求的插件还有：“<strong>CSSNext</strong>”（让开发者使用 <strong>css4</strong> 书写 <strong>css</strong> ，自动编译成目前浏览器支持的 <strong>css</strong> 语句）、“<strong>px2rem</strong>”（顾名思义，<strong>px</strong> 单位转 <strong>rem</strong> 单位，<strong>rem</strong> 更擅长自适应布局）等。<br>&emsp;&emsp;有人说，<strong>PostCSS</strong> 不是预处理器，也不是后处理器，不是“未来的语法”，也不是清理或优化工具，但凡是它们能是实现的，它都能做到。这其实就是在说，<strong>PostCSS</strong> 是什么，就看你需要什么了。</p>
+<h3 id="二、为什么要用-PostCSS"><a href="#二、为什么要用-PostCSS" class="headerlink" title="二、为什么要用 PostCSS"></a>二、为什么要用 <strong>PostCSS</strong></h3><p>&emsp;&emsp;一句话，为了从不必要的繁琐易错工作中解放，为了方便地体验到新技术的特性，为了更多已被和将被发掘出来的需求。比如为了兼容浏览器而加的各种前缀，为了体验 <strong>css4</strong> ，为了把 <strong>px</strong> 自动转换为 <strong>rem</strong> 以更好地实现自适应布局。</p>
+<h3 id="三、如何使用-PostCSS"><a href="#三、如何使用-PostCSS" class="headerlink" title="三、如何使用 PostCSS"></a>三、如何使用 <strong>PostCSS</strong></h3><ol>
+<li>明确你的需求，挑选或开发用于满足这个需求的插件；</li>
+<li>使用 <strong>gulp</strong> （需 <strong>gulp-postcss</strong>）或 <strong>webpack</strong> （需 <strong>postcss-loader</strong>） 等综合前端自动化构建工具作为 <strong>PostCSS</strong> 的调用者，编写 <strong>gulp</strong> 任务（<strong>task</strong>）或配置 webpack 加载器（<strong>loader</strong>）；</li>
+<li>配置 <strong>PostCSS</strong> 。3种方式：在项目的 <strong>package.json</strong> 中配置，或创建一个 <strong>.postcssrc.json</strong> ，或<strong> .postcssrc.js</strong> / <strong>postcss.config.js</strong> 。前两者都是 <strong>json</strong> ，后面两者允许用户使用 <strong>js</strong> 模块语法；</li>
+<li>配置所用插件。这要阅读插件的使用说明。</li>
+</ol>
+<p>&emsp;&emsp;如此一来，当你在运行自动化构建时，<strong>PostCSS</strong> 将帮助你实现你所想要的。</p>
+<h3 id="四、如何在-vue-组件开发中使用-PostCSS"><a href="#四、如何在-vue-组件开发中使用-PostCSS" class="headerlink" title="四、如何在 vue 组件开发中使用 PostCSS"></a>四、如何在 vue 组件开发中使用 <strong>PostCSS</strong></h3><p>&emsp;&emsp;两种方法使用 <strong>PostCSS</strong> 插件：</p>
+<ol>
+<li><p>在 <strong>webpack</strong> 中使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"><span class="comment">// 其他配置...</span></div><div class="line">	plugins: [</div><div class="line">		<span class="keyword">new</span> webpack.LoaderOptionsPlugin(&#123;</div><div class="line">			<span class="attr">vue</span>: &#123;</div><div class="line">			<span class="comment">// 使用用户自定义插件</span></div><div class="line">				postcss: [<span class="built_in">require</span>(<span class="string">'postcss-cssnext'</span>)()] <span class="comment">//除了接受插件的数组，postcss 选项也接受...</span></div><div class="line">			&#125;</div><div class="line">		&#125;)</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在 <strong>vue-loader</strong> 中使用：（ <strong>postcss</strong> 作为 <strong>vue-loader</strong> 的一个选项 ）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="comment">// other options...</span></div><div class="line">  <span class="built_in">module</span>: &#123;</div><div class="line">    <span class="comment">// module.rules is the same as module.loaders in 1.x</span></div><div class="line">    rules: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.vue$/</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">'vue-loader'</span>,</div><div class="line">        <span class="comment">// vue-loader options goes here</span></div><div class="line">        options: &#123;</div><div class="line">          <span class="comment">// ...</span></div><div class="line">          postcss: [<span class="built_in">require</span>(<span class="string">'postcss-cssnext'</span>)()]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>直接使用 <strong>postcss-loader</strong> ：（这也是 <strong>vue-cli</strong> 模板项目中的用法）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// vue-loader.conf.js</span></div><div class="line"><span class="keyword">var</span> utils = <span class="built_in">require</span>(<span class="string">'./utils'</span>)</div><div class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>)</div><div class="line"><span class="keyword">var</span> isProduction = process.env.NODE_ENV === <span class="string">'production'</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">	<span class="attr">loaders</span>: utils.cssLoaders(&#123;</div><div class="line">		<span class="attr">sourceMap</span>: isProduction</div><div class="line">			? config.build.productionSourceMap</div><div class="line">			: config.dev.cssSourceMap,</div><div class="line">		<span class="attr">extract</span>: isProduction</div><div class="line">	&#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// utils.js</span></div><div class="line"><span class="comment">// ... the previous is emitted</span></div><div class="line"><span class="comment">// 处理 vue 内的 CSS</span></div><div class="line">exports.cssLoaders = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</div><div class="line">  options = options || &#123;&#125;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> cssLoader = &#123;</div><div class="line">    <span class="attr">loader</span>: <span class="string">'css-loader'</span>,</div><div class="line">    <span class="attr">options</span>: &#123;</div><div class="line">      <span class="attr">minimize</span>: process.env.NODE_ENV === <span class="string">'production'</span>,</div><div class="line">      <span class="attr">sourceMap</span>: options.sourceMap</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// generate loader string to be used with extract text plugin</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">generateLoaders</span> (<span class="params">loader, loaderOptions</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> loaders = [cssLoader]</div><div class="line">    <span class="keyword">if</span> (loader) &#123;</div><div class="line">      loaders.push(&#123;</div><div class="line">        <span class="attr">loader</span>: loader + <span class="string">'-loader'</span>,</div><div class="line">        <span class="attr">options</span>: <span class="built_in">Object</span>.assign(&#123;&#125;, loaderOptions, &#123;</div><div class="line">          <span class="attr">sourceMap</span>: options.sourceMap <span class="comment">// 这些 *-loader 都可以设置 sourceMap 选项</span></div><div class="line">        &#125;)</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Extract CSS when that option is specified</span></div><div class="line">    <span class="comment">// (which is the case during production build)</span></div><div class="line">    <span class="keyword">if</span> (options.extract) &#123; <span class="comment">// 生产模式下提取 CSS 到单独一个文件</span></div><div class="line">      <span class="keyword">return</span> ExtractTextPlugin.extract(&#123;</div><div class="line">        <span class="attr">use</span>: loaders,</div><div class="line">        <span class="attr">fallback</span>: <span class="string">'vue-style-loader'</span></div><div class="line">      &#125;)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> [<span class="string">'vue-style-loader'</span>].concat(loaders) <span class="comment">// 每个 样式-loader 都要加上 vue-style-loader，</span></div><div class="line">    &#125;                                             <span class="comment">// 因为 v-s-l 要先把组件样式处理成这些 样式-loader 能处理的格式</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// https://vue-loader.vuejs.org/en/configurations/extract-css.html</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">css</span>: generateLoaders(),</div><div class="line">    <span class="attr">postcss</span>: generateLoaders(),</div><div class="line">    <span class="attr">less</span>: generateLoaders(<span class="string">'less'</span>),</div><div class="line">    <span class="attr">sass</span>: generateLoaders(<span class="string">'sass'</span>, &#123; <span class="attr">indentedSyntax</span>: <span class="literal">true</span> &#125;),</div><div class="line">    <span class="attr">scss</span>: generateLoaders(<span class="string">'sass'</span>),</div><div class="line">    <span class="attr">stylus</span>: generateLoaders(<span class="string">'stylus'</span>),</div><div class="line">    <span class="attr">styl</span>: generateLoaders(<span class="string">'stylus'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// ... the next is emitted</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&emsp;&emsp;<strong>postcss-loader</strong> 包含了 <strong>autoprefixer</strong> 和 <strong>cssnext</strong> 的功能。</p>
+<h3 id="五、PostCSS-插件一览"><a href="#五、PostCSS-插件一览" class="headerlink" title="五、PostCSS 插件一览"></a>五、<strong>PostCSS</strong> 插件一览</h3><ul>
+<li><a href="https://github.com/postcss/autoprefixer" target="_blank" rel="external">Autoprefixer</a></li>
+<li><a href="http://cssnext.io/" target="_blank" rel="external">CSSnext</a></li>
+<li><a href="https://github.com/shihuacivis/px2rem" target="_blank" rel="external">px2rem</a></li>
+<li>…</li>
+</ul>
+<h3 id="六、使用-PostCSS-的注意事项"><a href="#六、使用-PostCSS-的注意事项" class="headerlink" title="六、使用 PostCSS 的注意事项"></a>六、使用 <strong>PostCSS</strong> 的注意事项</h3><p>&emsp;&emsp;（后续使用过程中更新）</p>
+<h3 id="七、周边"><a href="#七、周边" class="headerlink" title="七、周边"></a>七、周边</h3><ul>
+<li><a href="https://www.postcss.parts/" title="PostCSS.parts: A searchable catalog of PostCSS plugins" target="_blank" rel="external">PostCSS 插件集：PostCSS.parts: A searchable catalog of PostCSS plugins</a></li>
+<li><a href="http://caniuse.com/" target="_blank" rel="external">CSS 特性兼容检索器：Can I Use</a></li>
+</ul>
+<h3 id="八、参考"><a href="#八、参考" class="headerlink" title="八、参考"></a>八、参考</h3><ul>
+<li><a href="https://happycoder.net/what-is-postcss/" title="PostCSS 究竟是个什么鬼？" target="_blank" rel="external">PostCSS 究竟是个什么鬼？</a></li>
+<li><a href="http://www.cnblogs.com/nzbin/p/5744672.html" title="使用 cssnext 书写未来的 CSS" target="_blank" rel="external">使用 cssnext 书写未来的 CSS</a></li>
+<li><a href="https://github.com/michael-ciniawsky/postcss-load-config" target="_blank" rel="external">PostCSS 配置方式</a></li>
+<li><a href="http://div.io/topic/1575" target="_blank" rel="external">在 gulp 中快速使用 PostCSS</a></li>
+<li><a href="https://juejin.im/post/581bfc368ac247004fe174af" target="_blank" rel="external">在 webpack for vue 中使用 PostCSS</a></li>
+<li><a href="http://www.jianshu.com/p/21d43d6ed713" target="_blank" rel="external">在 vue-loader 中使用 PostCSS</a></li>
+<li><a href="https://lvyongbo.gitbooks.io/vue-loader/content/features/postcss.html" target="_blank" rel="external">vue-loader 开发指南中文版 - PostCSS</a></li>
+<li><a href="https://www.w3cplus.com/preprocessor/postcss-modules-make-css-great-again.html" target="_blank" rel="external">让 CSS 更完美： PostCSS-modules</a></li>
+<li><a href="https://glenmaddern.com/articles/css-modules" target="_blank" rel="external">CSS Modules: Welcome To the Future</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>人总要有二维码的，万一土豪付费了呢</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="catcuts WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="catcuts Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue组件开发/" rel="tag"># vue组件开发</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/04/【vue组件开发日志】第1天：总览技术栈，搭建脚手架/" rel="next" title="【vue组件开发日志】第1天：总览技术栈，搭建脚手架">
+                <i class="fa fa-chevron-left"></i> 【vue组件开发日志】第1天：总览技术栈，搭建脚手架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/06/【vue组件开发日志】第3天：开始使用-vuejs-模板项目/" rel="prev" title="【vue组件开发日志】第3天：开始使用 vuejs 模板项目">
+                【vue组件开发日志】第3天：开始使用 vuejs 模板项目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTM5Mi81OTYw"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/catcuts.jpg"
+               alt="catcuts" />
+          <p class="site-author-name" itemprop="name">catcuts</p>
+           
+              <p class="site-description motion-element" itemprop="description">Web开发学习笔记</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=7d7Y2dzY3Nre3q2cnMOOgoA" target="_blank" title="Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/catcuts" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、PostCSS-是什么"><span class="nav-number">1.</span> <span class="nav-text">一、PostCSS 是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、为什么要用-PostCSS"><span class="nav-number">2.</span> <span class="nav-text">二、为什么要用 PostCSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、如何使用-PostCSS"><span class="nav-number">3.</span> <span class="nav-text">三、如何使用 PostCSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、如何在-vue-组件开发中使用-PostCSS"><span class="nav-number">4.</span> <span class="nav-text">四、如何在 vue 组件开发中使用 PostCSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、PostCSS-插件一览"><span class="nav-number">5.</span> <span class="nav-text">五、PostCSS 插件一览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、使用-PostCSS-的注意事项"><span class="nav-number">6.</span> <span class="nav-text">六、使用 PostCSS 的注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、周边"><span class="nav-number">7.</span> <span class="nav-text">七、周边</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、参考"><span class="nav-number">8.</span> <span class="nav-text">八、参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">catcuts</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
