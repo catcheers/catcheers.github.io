@@ -1,0 +1,724 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import \*.css 即可， webpack 会将 \*.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 \*.sass 或 *\*.less 等，vue 项目模板中的 webpack 配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【vue组件开发日志】第6天：在 vue 模板项目中使用 postcss-next 来编写可复用样式">
+<meta property="og:url" content="http://yoursite.com/2017/07/15/【vue组件开发日志】第6天：在-vue-模板项目中使用-postcss-next-来编写可复用样式/index.html">
+<meta property="og:site_name" content="Catlog">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import \*.css 即可， webpack 会将 \*.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 \*.sass 或 *\*.less 等，vue 项目模板中的 webpack 配">
+<meta property="og:updated_time" content="2017-07-17T01:48:14.558Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【vue组件开发日志】第6天：在 vue 模板项目中使用 postcss-next 来编写可复用样式">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import \*.css 即可， webpack 会将 \*.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 \*.sass 或 *\*.less 等，vue 项目模板中的 webpack 配">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/15/【vue组件开发日志】第6天：在-vue-模板项目中使用-postcss-next-来编写可复用样式/"/>
+
+
+
+
+
+  <title> 【vue组件开发日志】第6天：在 vue 模板项目中使用 postcss-next 来编写可复用样式 | Catlog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Catlog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">by ProgrammingCat</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/15/【vue组件开发日志】第6天：在-vue-模板项目中使用-postcss-next-来编写可复用样式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="catcuts">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/catcuts.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Catlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                【vue组件开发日志】第6天：在 vue 模板项目中使用 postcss-next 来编写可复用样式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-15T22:36:13+08:00">
+                2017-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  &emsp;&emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import \*.css 即可， webpack 会将 \*.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 \*.sass 或 *\*.less 等，vue 项目模板中的 webpack 配置还会支持将它们转化成 css 后再 import。
+&emsp;&emsp;那你有没有试过用 postcss-next 写的 *.postcss 呢， vue 模板项目中的 webpack 配置 已经为它配置好了一切吗？实践证明，答案是否定的。那就让我们自己动手来完善这个配置吧。
+
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Try Editor.md</p>
+<h3 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h3><p>&emsp;&emsp;在 <strong>vue</strong> 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 <strong>*.css</strong> 文件中，然后在需要的时候 <strong>import *.css</strong> 即可， <strong>webpack</strong> 会将 <strong>*.css</strong> 中的样式生成一个 <strong>style</strong> 标签插入到组件的 <strong>html</strong> 中。如果是 <strong>*.sass</strong> 或 <strong><em>\</em>.less</strong> 等，<strong>vue</strong> 项目模板中的 <strong>webpack</strong> 配置还会支持将它们转化成 <strong>css</strong> 后再 <strong>import</strong>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack.base.conf.js</span></div><div class="line"><span class="comment">// 前略</span></div><div class="line">&#123;</div><div class="line">	<span class="attr">test</span>: <span class="regexp">/\.vue$/</span>,</div><div class="line">	<span class="attr">loader</span>: <span class="string">'vue-loader'</span>,</div><div class="line">	<span class="attr">options</span>: vueLoaderConfig <span class="comment">// =&gt; options: &#123;</span></div><div class="line">	<span class="comment">//      css: ['vue-style-loader', 'css-loader']</span></div><div class="line">	<span class="comment">//      postcss: ['vue-style-loader', 'css-loader']</span></div><div class="line">	<span class="comment">//      less: ['vue-style-loader', 'css-loader', 'less-loader']</span></div><div class="line">	<span class="comment">//      sass: ['vue-style-loader', 'css-loader', 'sass-loader']</span></div><div class="line">	<span class="comment">//      scss: ['vue-style-loader', 'css-loader', 'scss-loader']</span></div><div class="line">	<span class="comment">//      stylus: ['vue-style-loader', 'css-loader', 'stylus-loader']</span></div><div class="line">	<span class="comment">//      styl: ['vue-style-loader', 'css-loader', 'styl-loader']</span></div><div class="line">	<span class="comment">//     &#125;</span></div><div class="line">&#125;,</div><div class="line"><span class="comment">// 后略</span></div></pre></td></tr></table></figure></p>
+<h3 id="二、问题"><a href="#二、问题" class="headerlink" title="二、问题"></a>二、问题</h3><p>&emsp;&emsp;但问题是，我尝试了 <strong>*.postcss</strong> ，在里面写 <strong>postcss-next</strong> 语法的样式，然后在 <strong>App.vue</strong> 或 <strong>main.js</strong> 中 <strong>import</strong> ，却总是得到没有解析的的代码。你也可以试试。<br>&emsp;&emsp;那么最后我是如何将 <strong>postcss-next</strong> 语法写的样式独立出来后，<strong>import</strong> 进去并转化成正确的 <strong>css</strong> 样式的呢？</p>
+<h3 id="三、方法"><a href="#三、方法" class="headerlink" title="三、方法"></a>三、方法</h3><p>&emsp;&emsp;首先，要给项目安装 <strong>postcss-loader</strong>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install postcss-loader --save-dev</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;然后，修改 <strong>utils.js</strong> 中的 <strong>cssLoaders</strong>：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// utils.js</span></div><div class="line"><span class="comment">// 前略</span></div><div class="line"><span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">css</span>: generateLoaders(),</div><div class="line">    <span class="attr">postcss</span>: generateLoaders(<span class="string">'postcss'</span>), <span class="comment">// 修改这里。postcss 插件配置在 .postcssrc.js 。另见 https://github.com/michael-ciniawsky/postcss-load-config</span></div><div class="line">                                <span class="comment">// https://github.com/postcss/postcss-loader</span></div><div class="line">                                <span class="comment">// 如果要使用 postcss-cssnext 除了更新 .postcssrc.js 还需 npm install postcss-cssnext</span></div><div class="line">    less: generateLoaders(<span class="string">'less'</span>),</div><div class="line">    <span class="attr">sass</span>: generateLoaders(<span class="string">'sass'</span>, &#123; <span class="attr">indentedSyntax</span>: <span class="literal">true</span> &#125;),</div><div class="line">    <span class="attr">scss</span>: generateLoaders(<span class="string">'sass'</span>),</div><div class="line">    <span class="attr">stylus</span>: generateLoaders(<span class="string">'stylus'</span>),</div><div class="line">    <span class="attr">styl</span>: generateLoaders(<span class="string">'stylus'</span>)</div><div class="line"><span class="comment">// 后略</span></div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;最后，在项目根目录下的 <strong>.postcssrc.js</strong> 中增加 <strong>postcss-next</strong> 插件：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// .postcssrc.js</div><div class="line">// https://github.com/michael-ciniawsky/postcss-load-config</div><div class="line">module.exports = &#123;</div><div class="line">  "plugins": &#123;</div><div class="line">    // to edit target browsers: use "browserlist" field in package.json</div><div class="line">    // "autoprefixer": &#123;&#125;, // postcss-cssnext 已经包含了 autoprefixer</div><div class="line">    "postcss-cssnext": &#123;&#125;, //增加这个</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;最后的最后，在 <strong>main.js</strong> 中引用你的 <strong>*.postcss</strong> 文件吧，这样，你在其中定义的所有样式，都可以在项目中任意组件中复用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="comment">// 前略</span></div><div class="line"><span class="keyword">import</span> <span class="string">'@/css/defined.postcss'</span> <span class="comment">// 注：</span></div><div class="line">                               <span class="comment">//   1.  在 webpack.prod.conf 中， utils.styleLoaders 生成了对 .postcss 文件的加载器</span></div><div class="line">                               <span class="comment">//   2.  不要在 App.vue 中 import，因为 vue-loader 只会只会把 import 部分不作处理放进源码</span></div><div class="line">                               <span class="comment">//       而且， vue-loader 处理出来的东西无法再使用其他 loader 进行处理。参见：https://segmentfault.com/a/1190000004944322</span></div><div class="line">                               <span class="comment">//   3.  要使 .postcss 被 postcss-loader 处理，需要做两件事：</span></div><div class="line">                               <span class="comment">//         1)  安装 postcss-loader 并 --save-dev 因为 vue-cli 没有安装</span></div><div class="line">                               <span class="comment">//         2)  在 utils.js 里修改 postcss: generateLoaders('postcss') 因为 vue-cli 没有加 'postcss'</span></div><div class="line">                               <span class="comment">//   4.  .postcss 文件在 vsc 中安装 postcss-syntax 进行高亮显示</span></div><div class="line"></div><div class="line">Vue.config.productionTip = <span class="literal">false</span></div><div class="line"></div><div class="line"><span class="comment">/* eslint-disable no-new */</span></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">  router,</div><div class="line">  <span class="attr">template</span>: <span class="string">'&lt;App/&gt;'</span>,</div><div class="line">  <span class="attr">components</span>: &#123; App &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="四、结语"><a href="#四、结语" class="headerlink" title="四、结语"></a>四、结语</h3><p>&emsp;&emsp;怎么样，试试吧~: )</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>人总要有二维码的，万一土豪付费了呢</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="catcuts WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="catcuts Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/08/【vue组件开发日志】第5天：组件需求分析示例/" rel="next" title="【vue组件开发日志】第5天：组件需求分析示例">
+                <i class="fa fa-chevron-left"></i> 【vue组件开发日志】第5天：组件需求分析示例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTM5Mi81OTYw"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/catcuts.jpg"
+               alt="catcuts" />
+          <p class="site-author-name" itemprop="name">catcuts</p>
+           
+              <p class="site-description motion-element" itemprop="description">Web开发学习笔记</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=7d7Y2dzY3Nre3q2cnMOOgoA" target="_blank" title="Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  Mail
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/catcuts" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、背景"><span class="nav-number">1.</span> <span class="nav-text">一、背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、问题"><span class="nav-number">2.</span> <span class="nav-text">二、问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、方法"><span class="nav-number">3.</span> <span class="nav-text">三、方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、结语"><span class="nav-number">4.</span> <span class="nav-text">四、结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">catcuts</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
