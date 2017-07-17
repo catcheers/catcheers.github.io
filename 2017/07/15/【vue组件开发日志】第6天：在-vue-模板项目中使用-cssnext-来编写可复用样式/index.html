@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="&amp;emsp;&amp;emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import \*.css 即可， webpack 会将 *.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 *.sass 或 *.less 等，vue 项目模板中的 webpack 配置还会支">
+<meta name="description" content="&amp;emsp;&amp;emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import *.css 即可， webpack 会将 *.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 *.sass 或 *.less 等，vue 项目模板中的 webpack 配置还会支持">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【vue组件开发日志】第6天：在 vue 模板项目中使用 cssnext 来编写可复用样式">
 <meta property="og:url" content="http://yoursite.com/2017/07/15/【vue组件开发日志】第6天：在-vue-模板项目中使用-cssnext-来编写可复用样式/index.html">
 <meta property="og:site_name" content="Catlog">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import \*.css 即可， webpack 会将 *.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 *.sass 或 *.less 等，vue 项目模板中的 webpack 配置还会支">
-<meta property="og:updated_time" content="2017-07-17T13:09:02.306Z">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import *.css 即可， webpack 会将 *.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 *.sass 或 *.less 等，vue 项目模板中的 webpack 配置还会支持">
+<meta property="og:updated_time" content="2017-07-17T13:14:22.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【vue组件开发日志】第6天：在 vue 模板项目中使用 cssnext 来编写可复用样式">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import \*.css 即可， webpack 会将 *.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 *.sass 或 *.less 等，vue 项目模板中的 webpack 配置还会支">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import *.css 即可， webpack 会将 *.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 *.sass 或 *.less 等，vue 项目模板中的 webpack 配置还会支持">
 
 
 
@@ -310,7 +310,7 @@
 
           
               <div class="post-description">
-                  &emsp;&emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import \*.css 即可， webpack 会将 *.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 *.sass 或 *.less 等，vue 项目模板中的 webpack 配置还会支持将它们转化成 css 后再 import。
+                  &emsp;&emsp;在 vue 项目模板中，比如我们写了一个样式，并希望这个样式能在任意组件中复用，我们可以把这个样式写在一个单独的 *.css 文件中，然后在需要的时候 import *.css 即可， webpack 会将 *.css 中的样式生成一个 style 标签插入到组件的 html 中。如果是 *.sass 或 *.less 等，vue 项目模板中的 webpack 配置还会支持将它们转化成 css 后再 import。
 &emsp;&emsp;那你有没有试过用 cssnext 写的 *.postcss 呢， vue 模板项目中的 webpack 配置 已经为它配置好了一切吗？实践证明，答案是否定的。那就让我们自己动手来完善这个配置吧。
 
               </div>
